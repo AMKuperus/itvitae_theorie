@@ -26,9 +26,9 @@
     #Experimenteer met switch-case statement (incl default)
     #Experimenteer met while, do/while, for, for each en pas ook break en continue
     toe
-    //TODO Pas in 2 verschillende bestanden de 2 manieren voor namespaces toe
-    //TODO Pas in 1 bestand 2 verschillende namespaces toe
-    //TODO Pas de namespaces toe in een bestand
+    #Pas in 2 verschillende bestanden de 2 manieren voor namespaces toe
+    #Pas in 1 bestand 2 verschillende namespaces toe
+    #Pas de namespaces toe in een bestand
     //TODO Experimenteer met sub-namespaces
     //TODO Experimenteer met namespaces: Dynamic Usage en Aliasing */
   echo "Standard tag<hr>\n"; //\n in between "" gives a new line in the code
