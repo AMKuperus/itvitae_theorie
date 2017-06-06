@@ -14,17 +14,17 @@
     #Pas CONSTANTS toe in een PHP-script
     #Experimenteer met var_dump, print_r en debug_zval_dump
     #Pas de isset() en empty() functies toe
-    //TODO Experimenteer met de veelgebruikte operators: Assignment Operators, de 6
+    #Experimenteer met de veelgebruikte operators: Assignment Operators, de 6
     Arithmetic Operators, String Operators, Comparison Operators (4 Equivalence
     Operators en 2 Inequality Operators) en Logical Operators
-    //TODO Experimenteer met Bitwise Operators, Error Control Operators, Execution
+    #Experimenteer met Bitwise Operators, Error Control Operators, Execution
     Operators, Incrementing/Decrementing Operators en Type Operators
     #Experimenteer met if-elseif-else statements, en nested if-else statements
-    //TODO Experimenteer met de ternary operator en laat in een comment een vergelijkbare
+    #Experimenteer met de ternary operator en laat in een comment een vergelijkbare
     if/else statement zien
     #Experimenteer met een if/else-statement i.c.m. de isset() en empty() functies
-    //TODO Experimenteer met switch-case statement (incl default)
-    //TODO Experimenteer met while, do/while, for, for each en pas ook break en continue
+    #Experimenteer met switch-case statement (incl default)
+    #Experimenteer met while, do/while, for, for each en pas ook break en continue
     toe
     //TODO Pas in 2 verschillende bestanden de 2 manieren voor namespaces toe
     //TODO Pas in 1 bestand 2 verschillende namespaces toe
@@ -71,6 +71,12 @@
   $int = 123;
   $float = 99.99;
   $string = "String";
+  echo '<hr>' . PHP_EOL;
+
+  //casting
+  echo (int) $string;
+
+  echo '<hr>' . PHP_EOL;
 
   //If/else with is_bool() and strval()
   if(is_bool(strval($boolean))) {
@@ -140,5 +146,126 @@
   } else {
     echo 'empty' . PHP_EOL;
   }
+  echo "<hr>\n";
 
+  $c = 2726;
+  //Minus
+  $c = $c - 9383;
+  echo $c . "<br>\n";
+  //Add
+  $c = $c + 39383;
+  echo $c . "<br>\n";
+  //Divide
+  $c = $c / 3;
+  echo $c . "<br>\n";
+  //Multiply
+  $c = $c * 38937;
+  echo $c . "<br>\n";
+  //Modulo
+  $c = $c % 4;
+  echo $c . "<br>\n";
+  //Power
+  $c = $c ** 5;
+  echo $c . "<hr>\n";
+
+  //Concatenate strings
+  $abra = 'abra';
+  $kadabra = 'kadabra';
+  $abra .= $kadabra;
+  echo $abra . '<hr>' . PHP_EOL;
+
+  echo "<hr>\n";
+
+  //while-loop
+  $w = 10;
+  while ($w > 0) {
+    echo "<code>Countdown: $w</code>\n";
+    $w--;
+  }
+
+  echo "<hr>\n";
+
+  //do-while-loop
+  $dw = 0;
+  do {
+    if ($dw == 6) {
+      echo "BREAK";
+      break;
+    }
+    echo "<code>Countdown: $dw</code>\n";
+    $dw++;
+  } while ($dw < 10);
+
+  echo "<hr>\n";
+
+  //for-loop
+  for ($f = 0; $f <= 10; $f++) {
+    if($f == 5) {
+      echo 'Count I Nu without 5';
+      continue;
+    }
+    echo "<code>Count $f</code>\n";
+  }
+
+  echo "<hr>\n";
+
+  //foreach
+  $arr = ["boter", "kaas", "eieren"];
+  foreach ($arr as $aa) {
+    echo "<p>$aa</p>\n";
+  }
+
+  echo "<hr>\n";
+
+  //switch
+  $s = "zon";
+  switch($s) {
+    case "regen":
+      echo 'regen';
+      break;
+    case "zon":
+      echo "blue sky's";
+      break;
+    case "thunder":
+      echo "bammmm";
+      break;
+    default:
+      echo "you must live on the moon!";
+  }
+
+  echo "<hr>\n";
+
+  //bitwise
+  $bit = 1;
+  $bit >> 2;
+  echo $bit . '<br>' . PHP_EOL;
+  $bit << 1;
+  echo $bit . '<br>' . PHP_EOL;
+  echo (4 ^ $bit) . '<br>' . PHP_EOL;
+  echo ~$bit . '<br>' . PHP_EOL;
+  echo (2 | $bit) . '<br>' . PHP_EOL;
+  echo (6 & $bit) . '<br>' . PHP_EOL;
+
+  //comparison and && || XOR
+  $xxx = 5;
+  if ($xxx !== 'vijf' && $xxx != 4 || $xxx != 6) {
+    echo "5 is niet 4 en niet vijf of 6";
+  } elseif ($xxx == 5 XOR $xxx < 9) {
+    echo 'od fat duss';
+  } else {
+    echo "en dan kom je hier terecht";
+  }
+
+  echo "<hr>\n";
+
+  //Ternary
+  $ter = 5;
+  echo ($ter < 6 ? "correct" : "fout");
+  /*******************
+  *if ($ter < 6) {
+  *  echo "correct";
+  *} else {
+  *  echo "fout";
+  *}
+  ********************/
 ?>
