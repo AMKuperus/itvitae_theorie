@@ -30,12 +30,16 @@ echo hello() . '<br>' . PHP_EOL;
 
 //Function helloVisitor says hello to $person
 //@param $person is person to say hello to in function.
-function helloVisitor($person) {
+//Setting argument default as "ANONYMOUS"
+function helloVisitor($person = "ANONYMOUS") {
   return "Hello $person welcome!";
 }
 
 //Call function helloVisitor with a name for person being "Marley"
 echo helloVisitor("Marley") . '<br>' . PHP_EOL;
+
+//Call function helloVisitor that is anonymous
+echo 'ANONYMOUS CALL: ' . helloVisitor() . '<br>' . PHP_EOL;
 
 //Declaring a variable $a in global scope
 $a = "inside";
