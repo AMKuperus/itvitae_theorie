@@ -59,6 +59,7 @@ echo grantAccesA() . '<br>' . PHP_EOL;
 
 //Using $a inside it's own scope instead of $a in global scope
 function insideA() {
+  //Create $a inside the functions scope to reurn it on function call.
   $a = "I am inside the funtion A.";
   return $a;
 }
