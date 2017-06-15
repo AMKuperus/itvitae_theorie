@@ -112,8 +112,33 @@ if('2' === 2) {
   echo 'Now it sees the difference between a int and a string cause we used === <br>' . PHP_EOL;
 }
 
-//TODO Vergelijk (sub)strings met elkaar met de volgende functies: strcmp, strcasecmp,
+//Vergelijk (sub)strings met elkaar met de volgende functies: strcmp, strcasecmp,
 //substr_compare
+//Create 2 strings with the difference being capital and normal letters
+$string1 = 'QWERTY';
+$string2 = 'qwerty';
+//Compare strings with strcmp() which is case sensitive
+if (strcmp($string1, $string2) !== 0) {
+  //Outputs this
+  echo 'Not equal <br>' . PHP_EOL;
+} else {
+  echo 'equal <br>' . PHP_EOL;
+}
+
+//Compare strings with strcasecmp() which doesnt look at capitals
+if (strcasecmp($string1, $string2) !== 0) {
+  echo 'Not equal <br>' . PHP_EOL;
+} else {
+  //This should be the output know
+  echo 'Equal <br>' . PHP_EOL;
+}
+
+//Compare with substr_compare() comparing from second letter and then 3 positions
+if (substr_compare($string1, 'WERTY', 1, 3) !== 0) {
+  echo 'Not equal <br>' . PHP_EOL;
+} else {
+  echo 'equal <br>' . PHP_EOL;
+}
 
 //TODO Pas de volgende functies toe: strpos, strstr, stripos, stristr en beschrijf
 // in comment wat er gebeurd.
