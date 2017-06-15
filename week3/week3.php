@@ -1,12 +1,30 @@
 <?php
 
-//TODO Experimenteer met strings en pas single & double quotes toe
+//Experimenteer met strings en pas single & double quotes toe
+//Experimenteer met string met variables met zowel single en double quotes
+//Pas naast \n nog meer control characters toe
+$var = 'Variable';
+//Single quotes example
+echo 'This is a string with single quotes where we have to concatenate ' . $var .
+      ' with  closing the \' \' and useing a .<br>' . PHP_EOL;
+//Double quotes example
+echo "In a string\040made with double \"\" you can use $var directly inside the quotes.<br>\n";
 
-//TODO Experimenteer met string met variables met zowel single en double quotes
+//Pas Heredoc en Nowdoc toe in een bestand
+//Heredoc example
+$heredoc = <<<HERE
+<hr>Right about know this is $var.<br>\n
+HERE;
 
-//TODO Pas naast \n nog meer control characters toe
+echo $heredoc;
 
-//TODO Pas Heredoc en Nowdoc toe in een bestand
+//Nowdoc example
+$nowdoc = <<<'NOW'
+<hr>Now $var is like that in nowdoc<br>\n.<hr>
+NOW;
+
+echo $nowdoc;
+
 
 //TODO Pas escaping toe in meerdere strings
 
@@ -18,7 +36,7 @@
 //TODO Vergelijk strings met elkaar, met de == operator en de === operator
 
 //TODO Vergelijk (sub)strings met elkaar met de volgende functies: strcmp, strcasecmp,
-//substr_compare 
+//substr_compare
 
 //TODO Pas de volgende functies toe: strpos, strstr, stripos, stristr en beschrijf
 // in comment wat er gebeurd.
