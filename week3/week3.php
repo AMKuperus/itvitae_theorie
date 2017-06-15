@@ -95,7 +95,22 @@ echo $string[3] . '<br>' . PHP_EOL;
 $string[3] = 'r';
 echo $string . '<br>' . PHP_EOL;
 
-//TODO Vergelijk strings met elkaar, met de == operator en de === operator
+//Vergelijk strings met elkaar, met de == operator en de === operator
+//Using the == to compare a string with a int
+if('1' == 1) {
+  echo 'Cause of the use off == the operator finds this 1 and "1" are equal<br>' . PHP_EOL;
+} else {
+  //won't get here
+  echo 'meh<br>' . PHP_EOL;
+}
+
+//Using the === to compare a string with a int
+if('2' === 2) {
+  //won't get here
+  echo "meh<br>\n";
+} else {
+  echo 'Now it sees the difference between a int and a string cause we used === <br>' . PHP_EOL;
+}
 
 //TODO Vergelijk (sub)strings met elkaar met de volgende functies: strcmp, strcasecmp,
 //substr_compare
