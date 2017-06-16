@@ -4,7 +4,6 @@
 //Experimenteer met string met variables met zowel single en double quotes
 //Pas naast \n nog meer control characters toe
 //Pas escaping toe in meerdere strings
-
 $var = 'Variable';
 //Single quotes example
 echo 'This is a string with \'single quotes\' where we have to concatenate ' . $var .
@@ -140,8 +139,24 @@ if (substr_compare($string1, 'WERTY', 1, 3) !== 0) {
   echo 'equal <br>' . PHP_EOL;
 }
 
-//TODO Pas de volgende functies toe: strpos, strstr, stripos, stristr en beschrijf
+//Pas de volgende functies toe: strpos, strstr, stripos, stristr en beschrijf
 // in comment wat er gebeurd.
+$haystack = 'Just a useless meaningless string.';
+$needle = "n";
+
+//Call strpos() on $haystack looking for the needle.
+echo strpos($haystack, $needle) . '<br>' . PHP_EOL;
+
+//Call strstr() on $haystack with $needle to find first occurance of $needle and
+//return the part starting from it's first occurance.
+echo strstr($haystack, $needle) . '<br>' . PHP_EOL;
+
+//Call stripos() finding needle without caring for capitals
+echo stripos($haystack, 'N') . '<br>' . PHP_EOL;
+
+//Call stristrt() on $haystack looking for needle where given needle is a capital
+//Since stristr() does not care for capitals it will give the same result as before
+echo stristr($haystack, 'N') . '<br>' . PHP_EOL;
 
 //TODO Pas de volgende functies toe: strspn, strcspan, str_replace, substr_replace,
 //str_irpleace, met zowel string als arrays. Beschrijf in comment wat er gebeurd.
