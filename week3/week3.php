@@ -158,8 +158,27 @@ echo stripos($haystack, 'N') . '<br>' . PHP_EOL;
 //Since stristr() does not care for capitals it will give the same result as before
 echo stristr($haystack, 'N') . '<br>' . PHP_EOL;
 
-//TODO Pas de volgende functies toe: strspn, strcspan, str_replace, substr_replace,
-//str_irpleace, met zowel string als arrays. Beschrijf in comment wat er gebeurd.
+//Pas de volgende functies toe: strspn, strcspn, str_replace, substr_replace,
+//str_irpleace met string. Beschrijf in comment wat er gebeurd.
+$example = "qwerty09876";
+$mask = "qw";
+
+//Call strspn() on $example finding length segments matching mask.
+echo strspn($example, $mask) . '<br>' . PHP_EOL;
+
+//Call strcspn() finding length initial segment that does not match.
+echo strcspn($example, '09') . '<br>' . PHP_EOL;
+
+//Call str_replace() on $example, case sensitive, replaces the part that matches
+//$mask in $example
+echo str_replace('qw', '#@', $example) . '<br>' . PHP_EOL;
+
+//Call str_ireplace()  on $example, case insensitive, replaces the part that
+//matches $mask in example
+echo str_ireplace('Qw', '*&', $example) . '<br>' . PHP_EOL;
+
+//Call substr_replace
+echo substr_replace($example, 'replace', 3) . '<br>' . PHP_EOL;
 
 //TODO Experimenteer met substrings extracting
 
