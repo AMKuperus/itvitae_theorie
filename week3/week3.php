@@ -185,10 +185,13 @@ echo substr_replace($example, 'replace', 3) . '<br>' . PHP_EOL;
 $ty = substr($example, 4, 2);
 echo $ty . '<br>' . PHP_EOL;
 
-//TODO Format strings voor meerdere talen, door de setlocale-method toe te passen
+//Format strings voor meerdere talen, door de setlocale-method toe te passen
+setlocale(LC_ALL, 'nl_NL');
 
-//TODO Format numbers voor meerdere talen met de number_format functie, en currency
+//Format numbers voor meerdere talen met de number_format functie, en currency
 //met de money_format functie
+echo number_format("388374.484", 3, ",", ".") . '<br>' . PHP_EOL;
+echo money_format('%.2n', '393837.038') . '<br>' . PHP_EOL;
 
 //TODO Pas de volgende functies toe: printf, sprintf, fprintf en beschrijf in comment wat er
 //gebeurd
