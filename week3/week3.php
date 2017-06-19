@@ -187,6 +187,10 @@ echo $ty . '<br>' . PHP_EOL;
 
 //Format strings voor meerdere talen, door de setlocale-method toe te passen
 setlocale(LC_ALL, 'nl_NL');
+//Set timezone for europe/amsterdam
+date_default_timezone_set('Europe/Amsterdam');
+//Show time %k = hours (0-23h) %M = minutes %A = day %e = date(day) %b = month %Y = year
+echo strftime("%k:%M %A %e %b %Y") . '<br>' . PHP_EOL;
 
 //Format numbers voor meerdere talen met de number_format functie, en currency
 //met de money_format functie
@@ -216,7 +220,11 @@ if (!($file = fopen('test.txt', 'w'))) {
 //Print to the file
 fprintf($file, 'It is a simple fact that %s ! \n %s', $cat, $heredoc);
 
-//TODO Parse formatted input door de volgende functie toe te passen: sscanf
+//Parse formatted input door de volgende functie toe te passen: sscanf
+$ss = 'My favorit cat';
+//Use sscanf() on $ss and the call $as[2] printing cat
+$as = sscanf($ss, '%s %s %s');
+echo $as[2] . '<br>' . PHP_EOL;
 
 //TODO Doorloop alle stappen op https://regexone.com/
 
