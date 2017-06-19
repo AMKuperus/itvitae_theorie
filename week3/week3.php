@@ -180,7 +180,10 @@ echo str_ireplace('Qw', '*&', $example) . '<br>' . PHP_EOL;
 //Call substr_replace
 echo substr_replace($example, 'replace', 3) . '<br>' . PHP_EOL;
 
-//TODO Experimenteer met substrings extracting
+//Experimenteer met substrings extracting
+//Call substr() on example taking out the a part containing 'ty';
+$ty = substr($example, 4, 2);
+echo $ty . '<br>' . PHP_EOL;
 
 //TODO Format strings voor meerdere talen, door de setlocale-method toe te passen
 
