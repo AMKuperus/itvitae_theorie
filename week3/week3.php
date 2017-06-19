@@ -193,8 +193,28 @@ setlocale(LC_ALL, 'nl_NL');
 echo number_format("388374.484", 3, ",", ".") . '<br>' . PHP_EOL;
 echo money_format('%.2n', '393837.038') . '<br>' . PHP_EOL;
 
-//TODO Pas de volgende functies toe: printf, sprintf, fprintf en beschrijf in comment wat er
+//Pas de volgende functies toe: printf, sprintf, fprintf en beschrijf in comment wat er
 //gebeurd
+//Call printf() where we put string $cat inside the string in printf() which then
+//prints out the complete thing
+$cat = 'cat\'s are the best';
+$best = printf('It is a simple fact that %s !', $cat);
+echo $best . '<br>' . PHP_EOL;
+
+//Call sprintf() on a int with %b returning a binary representaton
+$bin = sprintf('%b', 256);
+echo $bin . '<br>' . PHP_EOL;
+
+//Call sprintf() on 13 with %X returning a hexadecimal representation of 13
+$hex = sprintf('%X', 13);
+echo $hex . '<br>' . PHP_EOL;
+
+//Use fprintf() creating a stream and wiriting to the stream
+if (!($file = fopen('test.txt', 'w'))) {
+  return;
+}
+//Print to the file
+fprintf($file, 'It is a simple fact that %s ! \n %s', $cat, $heredoc);
 
 //TODO Parse formatted input door de volgende functie toe te passen: sscanf
 
