@@ -121,14 +121,34 @@ function fruitify($value, $key) {
 array_walk($fruits, 'fruitify');
 echo '<hr>' . PHP_EOL;
 
-//TODO Controleer of een key in een array bestaat met behulp van de array_key_exists
+//Controleer of een key in een array bestaat met behulp van de array_key_exists
 //functie
+$find = 's';
+if(array_key_exists($find, $fruits)) {
+  echo $fruits[$find];
+} else {
+  echo 'Not found <br>' . PHP_EOL;
+}
+echo '<hr>' . PHP_EOL;
 
-//TODO Controleer of een element in een array bestaat met behulp van de in_array functie
+//Controleer of een element in een array bestaat met behulp van de in_array functie
+$find = 'merenge';
+if(in_array($find, $fruits)) {
+  echo 'Fruit ' . $find . ' found! <br>' . PHP_EOL;
+} else {
+  echo $find . ' does not exist <br>' . PHP_EOL;
+}
+echo '<hr>' . PHP_EOL;
 
-//TODO Haal alle keys op van een array met behulp van de array_keys functie
+//Haal alle keys op van een array met behulp van de array_keys functie
+$keys = array_keys($fruits);
+var_dump($keys);
+echo '<hr>' . PHP_EOL;
 
-//TODO Haal alle waarden op van een array met behulp van de array_values functie
+//Haal alle waarden op van een array met behulp van de array_values functie
+$values = array_values($fruits);
+var_dump($values);
+echo '<hr>' . PHP_EOL;
 
 //TODO Sorteer een array met behulp van de sort-functie en pas de 4 verschillende
 //methodes toe: SORT_LOCALE_STRING, SORT_NUMERIC, SORT_REGULAR, SORT_STRING
