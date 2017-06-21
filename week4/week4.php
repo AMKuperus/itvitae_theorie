@@ -57,10 +57,69 @@ echo '<hr>' . PHP_EOL;
 echo count($slice);
 echo '<hr>' . PHP_EOL;
 
-//TODO Loop door arrays heen met for, foreach met values, foreach met key & values
+//Loop door arrays heen met for, foreach met values, foreach met key & values
+$fruits = ['a' => 'apple',
+            'b' => 'banana',
+            'c' => 'cherry',
+            'd' => 'durian',
+            'e' => 'elderberries',
+            'f' => 'figs',
+            'g' => 'grapes',
+            'h' => 'honeydew melon',
+            'i' => NULL,
+            'j' => 'jackfruit',
+            'k' => 'kiwi',
+            'l' => 'lemon',
+            'm' => 'mango',
+            'n' => 'nectarine',
+            'o' => 'orange',
+            'p' => 'pear',
+            'q' => 'quince',
+            'r' => 'raspberry',
+            's' => 'strawberry',
+            't' => 'tangerine',
+            'u' => NULL,
+            'v' => NULL,
+            'w' => 'watermelon',
+            'x' => NULL,
+            'y' => NULL,
+            'z' => NULL];
+//Array with for
+$c = count($slice);
+for($i = 0; $i < $c; $i++) {
+  echo $slice[$i];
+}
+echo '<hr>' . PHP_EOL;
 
-//TODO Loop door arrays heen met de array_walk functie en pas een callback functie
+//Array with foreach
+foreach($slice as $s) {
+  echo $s;
+}
+echo '<hr>' . PHP_EOL;
+
+//Array with foreach and key and value
+foreach($fruits as $k => $v) {
+  if (!isset($v)) {
+    echo 'Letter <strong>' . strtoupper($k) . '</strong> can not be found.<br>' . PHP_EOL;
+  } else {
+    echo 'Fruit: ' . $v . '<br>' . PHP_EOL;
+  }
+}
+echo '<hr>' . PHP_EOL;
+
+//Loop door arrays heen met de array_walk functie en pas een callback functie
 //toe om waarden aan te passen
+//Function for the calback on array_walk()
+function fruitify($value, $key) {
+  if(isset($value)) {
+    echo strtoupper($key) . ' is for <strong>' . $value . '</strong><br>' . PHP_EOL;
+  } else {
+    echo 'There is no fruit starting with a ' . strtoupper($key) . '<br>' . PHP_EOL;
+  }
+}
+//Calling array_walk() with fruitify()
+array_walk($fruits, 'fruitify');
+echo '<hr>' . PHP_EOL;
 
 //TODO Controleer of een key in een array bestaat met behulp van de array_key_exists
 //functie
