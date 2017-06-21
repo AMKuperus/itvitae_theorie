@@ -1,23 +1,61 @@
 <?php
-//TODO Maak een indexed array met numerieke keys met de array functie
+//Maak een indexed array met numerieke keys met de array functie
+$array = array(1, 2, 3);
+var_dump($array);
+echo '<hr>' . PHP_EOL;
 
-//TODO Maak een associatieve array met alfanumerieke keys met de array operator
+//Maak een associatieve array met alfanumerieke keys met de array operator
+$assocarray = array(1 => 'een', 'A' => 'a', 3 => 'drie');
+var_dump($assocarray);
+echo '<hr>' . PHP_EOL;
 
-//TODO Maak 1 array zonder keys met de short array syntax
+//Maak 1 array zonder keys met de short array syntax
+$short = [1, 2, 3];
+var_dump($short);
+echo '<hr>' . PHP_EOL;
 
-//TODO Maak een multidimensionale array (dus een array in een array)
+//Maak een multidimensionale array (dus een array in een array)
+$multi = ['A' => ['1' => 'een', '2', 'twee'], 'B' => ['3' => 'drie', '4' =>'vier']];
+var_dump($multi);
+echo '<hr>' . PHP_EOL;
 
-//TODO Pas de var_dump methode toe op bovenstaande arrays
+//Pas de var_dump methode toe op bovenstaande arrays
 
-//TODO Pas de range functie toe om een array te maken binnen bepaald bereik
+//Pas de range functie toe om een array te maken binnen bepaald bereik
+$range = range('a', 'z');
+var_dump($range);
+echo '<hr>' . PHP_EOL;
 
-//TODO Pas de array_slice functie toe om een array op te splitsen
+//Pas de array_slice functie toe om een array op te splitsen
+$slice = array_slice($range, 23);
+var_dump($slice);
+echo '<hr>' . PHP_EOL;
 
-//TODO Voeg waarden aan een array toe met behulp van array_push & array_unshift
+//Voeg waarden aan een array toe met behulp van array_push & array_unshift
+//Adding 'push' to $shift[] at the end with array_push()
+array_push($slice, 'push');
+var_dump($slice);
+echo '<hr>' . PHP_EOL;
 
-//TODO Haal waarden uit een array met behulp van array_pop en array_shift
+//Adding 'shift' to the beginning of $slice[] with array_unshift()
+array_unshift($slice, 'shift');
+var_dump($slice);
+echo '<hr>' . PHP_EOL;
 
-//TODO Pas de count functie toe om het aantal elementen van een array te tellen.
+//Haal waarden uit een array met behulp van array_pop en array_shift
+//Removing 'push' from $slice[] with array_pop()
+array_pop($slice);
+var_dump($slice);
+echo '<hr>' . PHP_EOL;
+
+//Removing 'shift' from beginning of $shift[] with array_shift()
+array_shift($slice);
+var_dump($slice);
+echo '<hr>' . PHP_EOL;
+
+//Pas de count functie toe om het aantal elementen van een array te tellen.
+echo count($slice);
+echo '<hr>' . PHP_EOL;
 
 //TODO Loop door arrays heen met for, foreach met values, foreach met key & values
 
