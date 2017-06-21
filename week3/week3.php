@@ -226,22 +226,31 @@ $ss = 'My favorit cat';
 $as = sscanf($ss, '%s %s %s');
 echo $as[2] . '<br>' . PHP_EOL;
 
-//TODO Doorloop alle stappen op https://regexone.com/
-
-//TODO Experimenteer nadat je de stappen hebt doorlopen op Regexone met de Perl
+//Experimenteer nadat je de stappen hebt doorlopen op Regexone met de Perl
 //Compatible Regular Expressions functies binnen PHP: preg_match, preg_match_all,
 //preg_replace. Beschrijf wederom in comments wat er gebeurd.
 
 //Use preg_match() to test if a string contains digits capitals and normal letters
 //Everything between () is treathed as a group, then ?=.* means "if there is atleast one somewhere"
 //because it is grouped. The [A-Z] looks for capitals [a-z] for small letters and \d for digits (0-9)
-if (preg_match('/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)/', '2abj6876KK', $matches, PREG_OFFSET_CAPTURE)) {
+if (preg_match('/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)/', '2abj6876KK')) {
   echo 'MATCH' . '<br>' . PHP_EOL;
 } else {
   echo 'NO MATCH' . '<br>' . PHP_EOL;
 }
-//Show the matches
-var_dump($matches);
 
+//Use preg_match_all() to check if given string is a dutch postcode
+if (preg_match('/^(?P<digits>\d{4})(?P<text>[a-zA-Z]{2}$)/', '1234Aa', $matches)) {
+  echo 'MATCH' . '<br>' . PHP_EOL;
+} else {
+  echo 'NO MATCH' . '<br>' . PHP_EOL;
+}
+
+//Show result
+echo '[' . $matches['digits'] . strtoupper($matches['text']) . ']' . '<br>' . PHP_EOL;
+
+//Use preg_replace() to echo a correct string
+$badstring = 'A dog is cute.';
+echo preg_replace('/dog/', 'cat', $badstring);
 
 ?>
