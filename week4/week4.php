@@ -342,35 +342,74 @@ echo '<pre>';
 var_dump(array_flip($brands));
 echo '</pre><hr>' . PHP_EOL;
 
-//TODO array_intersect_assoc,
-//TODO array_intersect_key,
+
+//Use array_intersect() looking for values from $test in $fruits, returning a
+//array with the results that occured in $test
+$test = ['kiwi', 'b' => 'banana', 'orange', 'potato'];
+$ai = array_intersect($fruits, $test);
+echo '<pre>';
+var_dump($ai);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use array_intersect_assoc() looking for values from $test that match $fruit2
+//on both key and value returning matches in $aia[]
+$aia = array_intersect_assoc($fruit2, $test);
+echo '<pre>';
+var_dump($aia);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use array_intersect_key() Computes the intersection of arrays using keys for
+//comparison
+$test = ['een' => 1, 'drie' => 3, 'tien', 10, 'vijf' => 5];
+$a = ['een' => 1, 'vijf' => 3, 'tien' => 3];
+$aik = array_intersect_key($a, $test);
+echo '<pre>';
+var_dump($aik);
+echo '</pre><hr>' . PHP_EOL;
+
 //TODO array_intersect_uassoc,
 //TODO array_intersect_ukey,
-//TODO array_intersect,
+//TODO array_uintersect_assoc,
+//TODO array_uintersect_uassoc,
+//TODO array_uintersect,
+//TODO array_unique,
 //TODO array_map,
 //TODO array_merge_recursive,
 //TODO array_multisort,
 //TODO array_pad,
-//TODO array_product,
+//TODO array_udiff_assoc,
+//TODO array_udiff_uassoc,
+//TODO array_udiff,
+
+//Use array_product() to easily factorialize the contents of the array
+$a = [5, 4, 3, 2, 1];
+echo array_product($a);
+echo '</pre><hr>' . PHP_EOL;
 
 //Use array_rand(), returns a 'random' key from given array
 echo $fruits[array_rand($fruits)];
 echo '<hr>' . PHP_EOL;
 
 //TODO array_reduce,
-//TODO array_replace,
+
+//Use array_replace() to alter a array with given other array, on index=>value
+//Creates results in a new array $all[]
+$replace = [0 => 'donkervoort', 3 => 'ferrari', 4 => 'lexus'];
+$all = array_replace($brands, $replace);
+echo '<pre>';
+var_dump($all);
+echo '</pre><hr>' . PHP_EOL;
+
 //TODO array_replace_recursive,
-//TODO array_reverse,
+
+//Use array_reverse() to reverse all the elements in the array
+echo '<pre>';
+var_dump(array_reverse($brands));
+echo '</pre><hr>' . PHP_EOL;
+
 //TODO array_search,
 //TODO array_splice,
 //TODO array_sum,
-//TODO array_udiff_assoc,
-//TODO array_udiff_uassoc,
-//TODO array_udiff,
-//TODO array_uintersect_assoc,
-//TODO array_uintersect_uassoc,
-//TODO array_uintersect,
-//TODO array_unique,
 //TODO compact,
 //TODO current,
 //TODO each,
