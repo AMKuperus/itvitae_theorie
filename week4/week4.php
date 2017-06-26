@@ -373,13 +373,43 @@ echo '</pre><hr>' . PHP_EOL;
 //TODO array_uintersect_uassoc,
 //TODO array_uintersect,
 //TODO array_unique,
-//TODO array_map,
+
+//array_map() Applies the callback to the elements of the given arrays
+//Function to use as callback for array_map that takes given value and
+//multiplies it by 64
+function x64($x) {
+  return $x * 64;
+}
+$a = [1, 2, 4, 8];
+echo 'array_map<pre>';
+var_dump(array_map('x64', $a));
+echo '</pre><hr>' . PHP_EOL;
+
 //TODO array_merge_recursive,
 //TODO array_multisort,
 //TODO array_pad,
-//TODO array_udiff_assoc,
-//TODO array_udiff_uassoc,
-//TODO array_udiff,
+
+//array_udiff_assoc() Computes the difference of arrays with additional index
+//check, compares data by a callback function
+echo 'array_udiff_assoc<pre>';
+var_dump(array_udiff_assoc($test, $a, 'mySort'));
+echo '</pre><hr>' . PHP_EOL;
+
+
+//array_udiff_uassoc() Computes the difference of arrays with additional
+//index check, compares data and indexes by a callback function
+//Returns an array containing all the values from array1 that are not present
+//in any of the other arguments.
+echo 'array_udiff_uassoc<pre>';
+var_dump(array_udiff_uassoc($test, $a, 'containsE','mySort'));
+echo '</pre><hr>' . PHP_EOL;
+
+//array_udiff() Computes the difference of arrays by using a callback
+//function for data comparison
+echo 'array_udiff<pre>';
+var_dump(array_udiff($test, $a, 'mySort'));
+echo '</pre><hr>' . PHP_EOL;
+
 
 //Use array_product() to easily factorialize the contents of the array
 $a = [5, 4, 3, 2, 1];
