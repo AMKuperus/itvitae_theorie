@@ -252,7 +252,7 @@ echo 'array diff<pre>';
 var_dump($different);
 echo '</pre><hr>' . PHP_EOL;
 
-//TODO Vergelijk dezelfde 2 arrays met de array_diff_assoc, array_diff_key,
+//Vergelijk dezelfde 2 arrays met de array_diff_assoc, array_diff_key,
 //array_diff_uasocc() en array_diff_ukey-functies en beschrijf
 //het verschil onderling in commentaar.
 
@@ -284,13 +284,64 @@ echo '</pre><hr>' . PHP_EOL;
 
 //TODO Pas de ArrayObject-class toe, met name de append, asort, natsort methodes
 
-//TODO array_change_key_case,
-//TODO array_chunk,
-//TODO array_column,
-//TODO array_count_values,
-//TODO array_fill,
-//TODO array_filter,
-//TODO array_flip,
+//Use array_change_key_case() making all keys in $fruits uppercase
+$fupp = array_change_key_case($fruit2, CASE_UPPER);
+echo 'array change key case<pre>';
+var_dump($fupp);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use array_chunk() makes a multi-dimension array containing smaller arrays by
+//given size
+$chunk = array_chunk($fruit2, 3);
+echo 'array chunk<pre>';
+var_dump($chunk);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use array_column() to extract all records matching column key
+$cars = [ ['brand' => 'volvo',
+            'type' => 'XC40',
+            'color' => 'gunmetal blue'],
+          ['brand' => 'opel',
+            'type' => 'astra',
+            'color' => 'red'],
+          ['brand' => 'ford',
+            'type' => 'mustang',
+            'color' => 'black'],
+          ['brand' => 'mitshubishu',
+            'type' => 'EVO',
+            'color' => 'silver']];
+  $brands = array_column($cars, 'brand');
+  echo 'array column<pre>';
+  var_dump($brands);
+  echo '</pre><hr>' . PHP_EOL;
+
+//Use array_count_values() counting all the values of a array
+echo '<pre>';
+print_r(array_count_values($brands));
+echo '</pre><hr>' . PHP_EOL;
+
+//Use array_fill() to fill a array with values from starting index for given amount.
+$fill = array_fill(2, 3, 'twee tot vier');
+echo '<pre>';
+var_dump($fill);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use array_filter() giving back all the occurences that conatin a 'e'
+//Function that checks if there is a 'e' in the string, returning the $var if true
+function containsE($var) {
+  if(strpos($var, 'e')) {
+    return $var;
+  }
+}
+echo '<pre>';
+var_dump(array_filter($fruits, 'containsE'));
+echo '</pre><hr>' . PHP_EOL;
+
+//Use  array_flip() to flip key and value
+echo '<pre>';
+var_dump(array_flip($brands));
+echo '</pre><hr>' . PHP_EOL;
+
 //TODO array_intersect_assoc,
 //TODO array_intersect_key,
 //TODO array_intersect_uassoc,
@@ -301,13 +352,16 @@ echo '</pre><hr>' . PHP_EOL;
 //TODO array_multisort,
 //TODO array_pad,
 //TODO array_product,
-//TODO array_rand,
+
+//Use array_rand(), returns a 'random' key from given array
+echo $fruits[array_rand($fruits)];
+echo '<hr>' . PHP_EOL;
+
 //TODO array_reduce,
 //TODO array_replace,
 //TODO array_replace_recursive,
 //TODO array_reverse,
 //TODO array_search,
-//TODO array_slice,
 //TODO array_splice,
 //TODO array_sum,
 //TODO array_udiff_assoc,
@@ -317,7 +371,6 @@ echo '</pre><hr>' . PHP_EOL;
 //TODO array_uintersect_uassoc,
 //TODO array_uintersect,
 //TODO array_unique,
-//TODO array_values,
 //TODO compact,
 //TODO current,
 //TODO each,
@@ -327,5 +380,4 @@ echo '</pre><hr>' . PHP_EOL;
 //TODO next,
 //TODO pos,
 //TODO prev,
-//TODO range
 ?>
