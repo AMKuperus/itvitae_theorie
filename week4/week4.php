@@ -235,14 +235,19 @@ echo 'natsort<pre>';
 var_dump($fruits);
 echo '</pre><hr>' . PHP_EOL;
 
+//Voeg 2 arrays samen met de array_merge functie
+$merged = array_merge($fruits, $range);
+echo 'array merge<pre>';
+var_dump($merged);
+echo '</pre><hr>' . PHP_EOL;
 
-
-
-
-
-//TODO Voeg 2 arrays samen met de array_merge functie
-
-//TODO Vergelijk 2 arrays met de array_diff functie
+//Vergelijk 2 arrays met de array_diff functie
+//Compares $fruits against $range and returns the values in $fruits that are not
+//present in the other array.
+$different = array_diff($fruits, $range);
+echo 'array diff<pre>';
+var_dump($different);
+echo '</pre><hr>' . PHP_EOL;
 
 //TODO Vergelijk dezelfde 2 arrays met de array_diff_assoc, array_diff_key,
 //array_diff_uasocc() array_diff_ukey en array_diff_ukey-functies en beschrijf
