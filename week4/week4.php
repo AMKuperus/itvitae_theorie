@@ -150,33 +150,148 @@ $values = array_values($fruits);
 var_dump($values);
 echo '<hr>' . PHP_EOL;
 
-//TODO Sorteer een array met behulp van de sort-functie en pas de 4 verschillende
+//Sorteer een array met behulp van de sort-functie en pas de 4 verschillende
 //methodes toe: SORT_LOCALE_STRING, SORT_NUMERIC, SORT_REGULAR, SORT_STRING
 //en beschrijf in commentaar wat het verschil is.
 
-//TODO Sorteer een array met behulp van de overige functies: rsort, asort, arsort,
+//Use sort() with SORT_LOCALE_STRING which sorts by comparing the strings and
+//then sorts the array based on the current locale
+sort($fruits, SORT_LOCALE_STRING);
+echo 'SORT_LOCALE_STRING<pre>';
+var_dump($fruits);
+echo '</pre>';
+echo '<hr>' . PHP_EOL;
+
+//Use sort() with SORT_NUMERIC which sorts the array numerically
+sort($fruits, SORT_NUMERIC);
+echo 'SORT_NUMERIC<pre>';
+var_dump($fruits);
+echo '</pre>';
+echo '<hr>' . PHP_EOL;
+
+//Use sort with SORT_REGULAR which compares items normally and sorts them without
+//changing types.
+sort($fruits, SORT_REGULAR);
+echo 'SORT_REGULAR<pre>';
+var_dump($fruits);
+echo '</pre>';
+echo '<hr>' . PHP_EOL;
+
+//Use sort() with SORT_STRING which compares everything as a string and then
+//sorts the array based on these values
+sort($fruits, SORT_STRING);
+echo 'SORT_STRING<pre>';
+var_dump($fruits);
+echo '</pre>';
+echo '<hr>' . PHP_EOL;
+
+//Sorteer een array met behulp van de overige functies: rsort, asort, arsort,
 //ksort, krsort, usort, natsort en beschrijf in commentaar wat het verschil is.
+
+//Use rsort() which sorts the array in reverse order
+rsort($fruits);
+echo 'rsort<pre>';
+var_dump($fruits);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use asort() which sorts the array and maintains the index position
+asort($fruits);
+echo 'asort<pre>';
+var_dump($fruits);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use arsort() which sorts in reverse order and mainaints the index.
+arsort($fruits);
+echo 'arsort<pre>';
+var_dump($fruits);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use ksort() sorting a array by key
+ksort($fruits);
+echo 'ksort<pre>';
+var_dump($fruits);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use krsort() which sorts an array by key in reverse order
+krsort($fruits);
+echo 'krsort<pre>';
+var_dump($fruits);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use usort() which sort a array by value by using a function that says what to sort by
+function mySort($a,$b) {
+  if ($a==$b) return 0;
+  return ($a<$b)?-1:1;
+}
+
+usort($fruits, 'mySort');
+echo 'usort<pre>';
+var_dump($fruits);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use natsort() which sorts an array usiong a natural algorithm
+natsort($fruits);
+echo 'natsort<pre>';
+var_dump($fruits);
+echo '</pre><hr>' . PHP_EOL;
+
+
+
+
+
 
 //TODO Voeg 2 arrays samen met de array_merge functie
 
 //TODO Vergelijk 2 arrays met de array_diff functie
 
 //TODO Vergelijk dezelfde 2 arrays met de array_diff_assoc, array_diff_key,
-//array_diff_uasocc() en array_diff_ukey-functies en beschrijf het verschil
-//onderling in commentaar.
+//array_diff_uasocc() array_diff_ukey en array_diff_ukey-functies en beschrijf
+//het verschil onderling in commentaar.
 
 //TODO Pas de ArrayObject-class toe, met name de append, asort, natsort methodes
 
-//TODO Controleer of je alle onderstaande Array-functies (uit Appendix A:
-//Array Functions) hebt toegepast. Experimenteer met de functies die je nog niet
-//hebt toegepast.  array_change_key_case, array_chunk, array_column, array_count_values,
-//array_diff_assoc, array_diff_key, array_diff_uassoc, array_diff_ukey, array_diff,
-//array_fill, array_filter, array_flip, array_intersect_assoc, array_intersect_key,
-//array_intersect_uassoc, array_intersect_ukey, array_intersect, array_key_exists,
-//array_keys, array_map, array_merge, array_merge_recursive, array_multisort,
-//array_pad, array_product, array_rand, array_reduce, array_replace,
-//array_replace_recursive, array_reverse, array_search, array_slice, array_splice,
-//array_sum, array_udiff_assoc, array_udiff_uassoc, array_udiff, array_uintersect_assoc,
-//array_uintersect_uassoc, array_uintersect, array_unique, array_values, array_walk,
-//compact, count/sizeof, current, each, end, extract, in_array, key, next, pos, prev, range
+//TODO array_change_key_case,
+//TODO array_chunk,
+//TODO array_column,
+//TODO array_count_values,
+//TODO array_fill,
+//TODO array_filter,
+//TODO array_flip,
+//TODO array_intersect_assoc,
+//TODO array_intersect_key,
+//TODO array_intersect_uassoc,
+//TODO array_intersect_ukey,
+//TODO array_intersect,
+//TODO array_map,
+//TODO array_merge_recursive,
+//TODO array_multisort,
+//TODO array_pad,
+//TODO array_product,
+//TODO array_rand,
+//TODO array_reduce,
+//TODO array_replace,
+//TODO array_replace_recursive,
+//TODO array_reverse,
+//TODO array_search,
+//TODO array_slice,
+//TODO array_splice,
+//TODO array_sum,
+//TODO array_udiff_assoc,
+//TODO array_udiff_uassoc,
+//TODO array_udiff,
+//TODO array_uintersect_assoc,
+//TODO array_uintersect_uassoc,
+//TODO array_uintersect,
+//TODO array_unique,
+//TODO array_values,
+//TODO compact,
+//TODO current,
+//TODO each,
+//TODO end,
+//TODO extract,
+//TODO key,
+//TODO next,
+//TODO pos,
+//TODO prev,
+//TODO range
 ?>
