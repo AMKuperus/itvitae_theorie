@@ -436,16 +436,61 @@ echo '<pre>';
 var_dump(array_reverse($brands));
 echo '</pre><hr>' . PHP_EOL;
 
-//TODO array_search,
-//TODO array_splice,
-//TODO array_sum,
-//TODO compact,
-//TODO current,
-//TODO each,
-//TODO end,
-//TODO extract,
-//TODO key,
-//TODO next,
-//TODO pos,
-//TODO prev,
+//Use array_search() Looks for the needle (searchterm) in the haystack (array)
+$key = array_search('kiwi', $fruit2);
+echo $fruit2[$key] . '<hr>' . PHP_EOL;
+
+//Use array_splice() remove a portion of the array and replace it with something
+//else
+echo '<pre>';
+var_dump(Array_splice($brands, 1));
+echo '</pre><hr>' . PHP_EOL;
+
+//Use array_sum() to return the sum of the array
+echo array_sum($a) . '<hr>' . PHP_EOL;
+
+//Use compact() create a array containing variables and their values. Works recursivly
+$animal = 'cat';
+$color = 'black';
+$legs = 4;
+$likes = ['sleeping', 'eating', 'playing with a ball'];
+$compact = compact('animal', 'color', 'legs', 'likes');
+echo '<pre>';
+var_dump($compact);
+echo '</pre><hr>' . PHP_EOL;
+
+//Use current() shows current active element from the array
+echo current($compact) . '<hr>' . PHP_EOL;
+
+//Use each,Warning This function has been DEPRECATED as of PHP 7.2.0.
+//Relying on this function is highly discouraged.
+$each = each($fruit2);
+echo '<pre>';
+var_dump($each);
+echo '</pre><hr>' . PHP_EOL;
+
+//end() sets the pointer of an array to the last element
+echo '<pre>';
+end($compact);
+var_dump(current($compact));
+echo '</pre><hr>' . PHP_EOL;
+
+//extract() Import variables into the current symbol table from an array,
+//returns the number of variables succesfully imported into the symbol table
+$keyboard = ['type' => 'qwerty', 'tech' => 'mechanical'];
+extract($keyboard);
+echo "| $type | $tech |<hr>";
+
+//key() fetch a key from a array, returns the index of the current position of
+//the array
+echo key($fruit2) . '<hr>' . PHP_EOL;
+
+//prev() rewind the internal array pointer
+prev($fruit2);
+echo current($fruit2) . '<hr>' . PHP_EOL;
+
+//next() points the array internal pointer to the next
+next($fruit2);
+//pos() alias for current
+echo pos($fruit2) . '<hr>' . PHP_EOL;
 ?>
