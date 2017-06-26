@@ -390,7 +390,30 @@ echo '</pre><hr>' . PHP_EOL;
 echo $fruits[array_rand($fruits)];
 echo '<hr>' . PHP_EOL;
 
-//TODO array_reduce,
+//array_reduce() Iteratively reduce the array to a single value using a
+//callback function
+
+//Function to count the sum off tha array as callback method for array_reduce()
+function sum($carry, $item) {
+  $carry += $item;
+  return $carry;
+}
+
+//Function to multiply as callback for array_reduce()
+function multiply($carry, $item) {
+  $carry *= $item;
+  return $carry;
+}
+
+$a = [256, 128, 64];
+echo '<pre>';
+var_dump(array_reduce($a, 'sum'));
+echo '</pre><hr>' . PHP_EOL;
+//When using multiply as third parameter use initial value of 1 (can't multiply 0)
+echo '<pre>';
+var_dump(array_reduce($a, 'multiply', 1));
+echo '</pre><hr>' . PHP_EOL;
+
 
 //Use array_replace() to alter a array with given other array, on index=>value
 //Creates results in a new array $all[]
@@ -400,7 +423,13 @@ echo '<pre>';
 var_dump($all);
 echo '</pre><hr>' . PHP_EOL;
 
-//TODO array_replace_recursive,
+//Use array_replace_recursive() Replaces elements from passed arrays into the
+//first array recursively
+$replace = [0 => 'donkervoort', 'france' => ['renault', 'citroen']];
+$allr = array_replace_recursive($brands, $replace);
+echo '<pre>';
+var_dump($allr);
+echo '</pre><hr>' . PHP_EOL;
 
 //Use array_reverse() to reverse all the elements in the array
 echo '<pre>';
