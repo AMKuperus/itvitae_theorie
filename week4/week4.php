@@ -84,6 +84,9 @@ $fruits = ['a' => 'apple',
             'x' => NULL,
             'y' => NULL,
             'z' => NULL];
+
+$fruit2 = $fruits;
+
 //Array with for
 $c = count($slice);
 for($i = 0; $i < $c; $i++) {
@@ -244,14 +247,40 @@ echo '</pre><hr>' . PHP_EOL;
 //Vergelijk 2 arrays met de array_diff functie
 //Compares $fruits against $range and returns the values in $fruits that are not
 //present in the other array.
-$different = array_diff($fruits, $range);
+$different = array_diff($fruits, $fruit2);
 echo 'array diff<pre>';
 var_dump($different);
 echo '</pre><hr>' . PHP_EOL;
 
 //TODO Vergelijk dezelfde 2 arrays met de array_diff_assoc, array_diff_key,
-//array_diff_uasocc() array_diff_ukey en array_diff_ukey-functies en beschrijf
+//array_diff_uasocc() en array_diff_ukey-functies en beschrijf
 //het verschil onderling in commentaar.
+
+//Use array_diff_assoc() to compare the same array with each orther
+//Computes the difference of arrays with additional index check
+$ada = array_diff_assoc($fruits, $fruit2);
+echo 'array diff assoc<pre>';
+var_dump($ada);
+echo '</pre><hr>' . PHP_EOL;
+
+//Computes the difference of arrays using keys for comparison
+$adk = array_diff_key($fruits, $fruit2);
+echo 'array diff key<pre>';
+var_dump($adk);
+echo '</pre><hr>' . PHP_EOL;
+
+//Computes the difference of arrays with additional index check which is performed
+//by a user supplied callback function
+$adu = array_diff_uassoc($fruits, $fruit2, 'mySort');
+echo 'array diff uasocc with  mySort function as callback<pre>';
+var_dump($adu);
+echo '</pre><hr>' . PHP_EOL;
+
+//Computes the difference of arrays using a callback function on the keys for comparison
+$aduk = array_diff_ukey($fruits, $fruit2, 'mySort');
+echo 'array diff ukey with mySort function<pre>';
+var_dump($aduk);
+echo '</pre><hr>' . PHP_EOL;
 
 //TODO Pas de ArrayObject-class toe, met name de append, asort, natsort methodes
 
