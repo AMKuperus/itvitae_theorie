@@ -1,6 +1,4 @@
 <?php
-//Experimenteer met sessies; de session_start, session_destroy, session_id
-//-functies en de $_SESSION variable
 
 //If constant PHP_SESSION_NONE is the status of session_status there is no
 //session yet and we start one
