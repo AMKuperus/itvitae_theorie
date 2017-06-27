@@ -282,7 +282,20 @@ echo 'array diff ukey with mySort function<pre>';
 var_dump($aduk);
 echo '</pre><hr>' . PHP_EOL;
 
-//TODO Pas de ArrayObject-class toe, met name de append, asort, natsort methodes
+//Pas de ArrayObject-class toe, met name de append, asort, natsort methodes
+$object = new ArrayObject(['kiwi', 'banana', 'strawberry']);
+//Add a value to ArrayObject
+$object->append('peach');
+echo 'ArrayObject<pre>';
+var_dump($object);
+//Sort with asort()
+$object->asort();
+var_dump($object);
+//Sort natural with natsort()
+$object->natsort();
+var_dump($object);
+echo '</pre><hr>' . PHP_EOL;
+
 
 //Use array_change_key_case() making all keys in $fruits uppercase
 $fupp = array_change_key_case($fruit2, CASE_UPPER);
@@ -367,12 +380,53 @@ echo '<pre>';
 var_dump($aik);
 echo '</pre><hr>' . PHP_EOL;
 
-//TODO array_intersect_uassoc,
-//TODO array_intersect_ukey,
-//TODO array_uintersect_assoc,
-//TODO array_uintersect_uassoc,
-//TODO array_uintersect,
-//TODO array_unique,
+//array_intersect_uassoc() Computes the intersection of arrays with
+//additional index check, compares indexes by a callback function
+echo 'array_intersect_uassoc<pre>';
+var_dump(array_intersect_uassoc($test, $a, 'mySort'));
+echo '</pre><hr>' . PHP_EOL;
+
+
+//array_intersect_ukey() Computes the intersection of arrays using a callback
+//function on the keys for comparison
+function myFunction($a, $b) {
+  if ($a===$b)
+    {
+      return 0;
+    }
+    return ($a>$b)?1:-1;
+  }
+echo 'array_intersect_ukey<pre>';
+var_dump(array_intersect_ukey($test, $a, 'myFunction'));
+echo '</pre><hr>' . PHP_EOL;
+
+
+//array_uintersect_assoc() Computes the intersection of arrays with additional
+//index check, compares data by a callback function
+echo 'array_uintersect_assoc<pre>';
+var_dump(array_uintersect_assoc($test, $a, 'myFunction'));
+echo '</pre><hr>' . PHP_EOL;
+
+//array_uintersect_uassoc() Computes the intersection of arrays with additional
+//index check, compares data and indexes by separate callback functions
+echo 'array_uintersect_uassoc<pre>';
+var_dump(array_uintersect_uassoc($test, $a, 'myFunction', 'mySort'));
+echo '</pre><hr>' . PHP_EOL;
+
+
+//array_uintersect() Computes the intersection of arrays, compares data by
+//a callback function
+echo 'array_uintersect<pre>';
+var_dump(array_uintersect($test, $a, 'myFunction'));
+echo '</pre><hr>' . PHP_EOL;
+
+
+//array_unique() Removes duplicate values from an array
+$a = ['volvo', 'fiat', 'peugeot', 'lada', 'volvo', 'fiat'];
+array_unique($a);
+echo 'array_unique<pre>';
+var_dump(array_unique($a));
+echo '</pre><hr>' . PHP_EOL;
 
 //array_map() Applies the callback to the elements of the given arrays
 //Function to use as callback for array_map that takes given value and
@@ -380,14 +434,38 @@ echo '</pre><hr>' . PHP_EOL;
 function x64($x) {
   return $x * 64;
 }
+
 $a = [1, 2, 4, 8];
 echo 'array_map<pre>';
 var_dump(array_map('x64', $a));
 echo '</pre><hr>' . PHP_EOL;
 
-//TODO array_merge_recursive,
-//TODO array_multisort,
-//TODO array_pad,
+//array_merge_recursive() Merge two or more arrays recursively
+$merged = array_merge_recursive($fruit2, $cars);
+echo 'array_merge_recursive<pre>';
+var_dump($merged);
+echo '</pre><hr>' . PHP_EOL;
+
+
+//array_multisort() sorts array, first array gets sorted natural, second
+//gets sorted same as firts so if last position is smallest in first and gets
+//position 0 the second array will then put the last thing on 0 no matter the
+//size/value
+$a1 = [10, 20, 25, 5];
+$a2 = [1, 2, 3, 4];
+array_multisort($a1, $a2);
+echo 'array_multisort<pre>';
+var_dump($a1);
+var_dump($a2);
+echo '</pre><hr>' . PHP_EOL;
+
+
+//array_pad() Pad array to the specified length with a value
+$a = [1, 2, 3];
+$result = array_pad($a, 6, 'CAT');
+echo 'array_pad<pre>';
+var_dump($result);
+echo '</pre><hr>' . PHP_EOL;
 
 //array_udiff_assoc() Computes the difference of arrays with additional index
 //check, compares data by a callback function
