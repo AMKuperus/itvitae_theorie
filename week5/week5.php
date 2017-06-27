@@ -1,5 +1,11 @@
 <?php
-
+//Set a cookie that expires after 30 minutes
+//Serialize() generates a storable representation of a value, needs to be
+//unserialize() to be usable again(unpack)
+setcookie('cookie', serialize('yumm'), time()+1800);
+//Bake a raw cookie {raw cookie is cookie witgout urlencoding}
+//Use rawurlencode to make sure all browsers encode spaces correct
+setrawcookie('dough', rawurlencode('meh'), time()+1800);
 //Pas de header functie toe zoals in de voorbeelden van
 //https://www.w3schools.com/php/func_http_header.asp
 //see index.php for redirect
@@ -17,15 +23,37 @@ echo '<a href="http://127.0.0.1/itvitae_theorie/week5/pdf.php" target="_blank">
 
 //Experimenteer met sessies; de session_start, session_destroy, session_id
 //-functies en de $_SESSION variable
-echo '<a href="http://127.0.0.1/itvitae_theorie/week5/session.php">SESSIONS</a>';
+echo '<a href="http://127.0.0.1/itvitae_theorie/week5/session.php">SESSIONS</a><br>' . PHP_EOL;
 
-//TODO Experimenteer met cookies; setcookie-& setrawcookie-functies. Roep de
+//Experimenteer met cookies; setcookie-& setrawcookie-functies. Roep de
 //waarden uit het cookie aan via de $_COOKIE en $_REQUEST variabelen
+//Pas bij sessies of cookiees ook de serialize & unserialize-functies toe
 
-//TODO Pas bij sessies of cookiees ook de serialize & unserialize-functies toe
+
+//$_REQUEST is bad practice to use because if you need to call variables by use
+//of $_REQUEST you do not know where it comes from, better figure out where to get
+//variable from then use a bad practice method(it is even nowadays turned off in
+//php.ini because it is a vulnerability)
+
+//Grabbing baked cookie, cookie will only be rechable after page has refreshed
+//and cookie has baked itself(if user permnits cookies)
+if(!isset($_COOKIE['cookie'])){
+  echo 'No cookies in the jar<br>' . PHP_EOL;
+} else {
+  //With unserialize() we make sure the value is human-readable
+  echo 'Cookie value: ' . unserialize($_COOKIE['cookie']) . '<br>' . PHP_EOL;
+}
+
+//Grabbing raw cookie, cookie will only be rechable after page has refreshed and
+//cookie has baked itself(if user permnits cookies)
+if(!isset($_COOKIE['dough'])) {
+  echo 'Cookie needs baking<br>' . PHP_EOL;
+} else {
+  echo 'Raw cookie: ' . $_COOKIE['dough'] . '<br>' . PHP_EOL;
+}
 
 //TODO Maak een formulier in HTML aan die met een POST-methode data stuurt naar
-//eenPHP-script
+//een PHP-script
 
 //TODO Maak een formulier in HTML aan die met een GET-methode data stuurt naar
 //een PHP-script
