@@ -62,8 +62,13 @@ if(!isset($_COOKIE['dough'])) {
 //(Bijv. <input name="FormArray[]">) en lees de waarden van het tekstvak uit in
 //een PHP-script.
 
-//TODO Controleer met een HTML-formulier of je data kan uitlezen via de $_REQUEST
+//Controleer met een HTML-formulier of je data kan uitlezen via de $_REQUEST
 //variable.
+echo '<code>If $_REQUEST is activated this should be possible if either POST or
+      GET is used,however is is a stupid thing to do since you would have to turn
+      the function on in php.ini and it is nowadays turned off cause it is a
+      vulnerability-risk. Also, when using a html-form you specified method in
+      first line of the form so should know what to use (POST or GET)</code><br>';
 
 //TODO Pas de htmlspecialchars-functie toe in 1 van je bovenstaande PHP-scripts
 
