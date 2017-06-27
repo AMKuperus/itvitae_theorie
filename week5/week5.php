@@ -1,6 +1,16 @@
 <?php
-//TODO Pas de header functie toe zoals in de voorbeelden van
+//Pas de header functie toe zoals in de voorbeelden van
 //https://www.w3schools.com/php/func_http_header.asp
+//see index.php for redirect
+//Another good explenation on headers is found here:
+//http://www.nicholassolutions.com/tutorials/php/headers.html
+//Turning off caching with header()
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Expires: Sun, 01 Jul 2005 00:00:00 GMT');
+header('Pragma: no-cache');
+echo '<a href="http://127.0.0.1/itvitae_theorie/week5/pdf.php" target="_blank">
+      CLICK ME TO SEE A PDF</a>';
+      
 //TODO Experimenteer met sessies; de session_start, session_destroy, session_id
 //-functies en de $_SESSION variable
 //TODO Experimenteer met cookies; setcookie-& setrawcookie-functies. Roep de
