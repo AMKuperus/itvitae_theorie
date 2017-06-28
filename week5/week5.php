@@ -96,11 +96,23 @@ echo '<a href="' . htmlspecialchars($url) . '">Click for urlencoded link to get.
 //TODO Pas in een HTML-formulier & PHP-script de filter_var-functie toe met alle
 //Validate filters, Sanitize filters en overige filters.
 
-//TODO Bouw een script dat een array omzet naar JSON of XML, en dit op het scherm
+//Bouw een script dat een array omzet naar JSON of XML, en dit op het scherm
 //toont
+$cars = ['Ford' => 'Mustang', 'Opel' => 'Astra', 'Aston Martin' => 'DB11', 'Chevrolet' => 'Corvette'];
+//Create JSON from array[]
+$jsoncars = json_encode($cars);
+//Show JSON
+echo $jsoncars . '<br>' . PHP_EOL;
+//Decode back to array and show var_dump()
+var_dump(json_decode($jsoncars));
+echo '<br>' . PHP_EOL;
 
-//TODO Bouw een script dat JSON-data of XML-data uitleest en toont op het scherm
+//Bouw een script dat JSON-data of XML-data uitleest en toont op het scherm
 //als normale tekst.
+$decode = json_decode($jsoncars);
+echo $decode->Ford . '<br>' . PHP_EOL;
+//Call a object with whitespace in its name as follows with {'na me'}
+echo $decode->{'Aston Martin'} . '<br>' . PHP_EOL;
 
 //TODO Bouw een webservice voor je casus-opdracht om data te consumeren en data
 //te posten in JSON of XML
