@@ -12,18 +12,20 @@ setrawcookie('dough', rawurlencode('meh'), time()+1800);
 //Another good explenation on headers is found here:
 //http://www.nicholassolutions.com/tutorials/php/headers.html
 
+include 'config.inc.php';
+
 //Turning off caching with header()
 #Commented out cause of conflict with SESSION
 #header('Cache-Control: no-cache, no-store, must-revalidate');
 #header('Expires: Sun, 01 Jul 2005 00:00:00 GMT');
 #header('Pragma: no-cache');
 
-echo '<a href="http://127.0.0.1/itvitae_theorie/week5/pdf.php" target="_blank">
+echo '<a href="' . $baseurl . '/itvitae_theorie/week5/pdf.php" target="_blank">
       CLICK ME TO SEE A PDF</a><br>' . PHP_EOL;
 
 //Experimenteer met sessies; de session_start, session_destroy, session_id
 //-functies en de $_SESSION variable
-echo '<a href="http://127.0.0.1/itvitae_theorie/week5/session.php">SESSIONS</a><br>' . PHP_EOL;
+echo '<a href="' . $baseurl . '/itvitae_theorie/week5/session.php">SESSIONS</a><br>' . PHP_EOL;
 
 //Experimenteer met cookies; setcookie-& setrawcookie-functies. Roep de
 //waarden uit het cookie aan via de $_COOKIE en $_REQUEST variabelen

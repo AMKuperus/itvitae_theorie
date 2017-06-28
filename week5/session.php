@@ -1,5 +1,5 @@
 <?php
-
+include 'config.inc.php';
 //If constant PHP_SESSION_NONE is the status of session_status there is no
 //session yet and we start one
 if(session_status() == PHP_SESSION_NONE) {
@@ -31,5 +31,5 @@ echo  '<form method="POST">' .
       '<input type="submit" value="reset" name="reset">' .
       '</form>';
 
-echo '<a href="http://127.0.0.1/itvitae_theorie/week5/week5.php">BACK to MAIN</a>';
+echo '<a href="' . $baseurl . '/itvitae_theorie/week5/week5.php">BACK to MAIN</a>';
 ?>
