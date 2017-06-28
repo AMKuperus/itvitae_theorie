@@ -54,11 +54,13 @@ if(!isset($_COOKIE['dough'])) {
   echo 'Raw cookie: ' . $_COOKIE['dough'] . '<br>' . PHP_EOL;
 }
 
-//TODO Maak een formulier in HTML aan die met een POST-methode data stuurt naar
+//Maak een formulier in HTML aan die met een POST-methode data stuurt naar
 //een PHP-script
+echo '<a href="' . $baseurl . '/itvitae_theorie/week5/post.php" target="_BLANK">POST</a><br>' . PHP_EOL;
 
-//TODO Maak een formulier in HTML aan die met een GET-methode data stuurt naar
+//Maak een formulier in HTML aan die met een GET-methode data stuurt naar
 //een PHP-script
+echo '<a href="' . $baseurl . '/itvitae_theorie/week5/get.php" target="_BLANK">GET</a><br>' . PHP_EOL;
 
 //TODO Zet in een HTML-formulier 2 tekstvakken neer waar de naam een array is
 //(Bijv. <input name="FormArray[]">) en lees de waarden van het tekstvak uit in
