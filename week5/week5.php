@@ -60,11 +60,11 @@ echo '<a href="' . $baseurl . '/itvitae_theorie/week5/post.php" target="_BLANK">
 
 //Maak een formulier in HTML aan die met een GET-methode data stuurt naar
 //een PHP-script
-echo '<a href="' . $baseurl . '/itvitae_theorie/week5/get.php" target="_BLANK">GET</a><br>' . PHP_EOL;
-
-//TODO Zet in een HTML-formulier 2 tekstvakken neer waar de naam een array is
+//Zet in een HTML-formulier 2 tekstvakken neer waar de naam een array is
 //(Bijv. <input name="FormArray[]">) en lees de waarden van het tekstvak uit in
 //een PHP-script.
+
+echo '<a href="' . $baseurl . '/itvitae_theorie/week5/get.php" target="_BLANK">GET</a><br>' . PHP_EOL;
 
 //Controleer met een HTML-formulier of je data kan uitlezen via de $_REQUEST
 //variable.
