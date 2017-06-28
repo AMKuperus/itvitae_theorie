@@ -3,6 +3,7 @@ include 'config.inc.php';
 //If constant PHP_SESSION_NONE is the status of session_status there is no
 //session yet and we start one
 if(session_status() == PHP_SESSION_NONE) {
+  session_id('thissessionid');
   session_start();
 }
 
