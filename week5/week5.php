@@ -56,13 +56,15 @@ if(!isset($_COOKIE['dough'])) {
 
 //Maak een formulier in HTML aan die met een POST-methode data stuurt naar
 //een PHP-script
+//Zet in een HTML-formulier 2 tekstvakken neer waar de naam een array is
+//(Bijv. <input name="FormArray[]">) en lees de waarden van het tekstvak uit in
+//een PHP-script.
+//Pas de htmlspecialchars-functie toe in 1 van je bovenstaande PHP-scripts
+
 echo '<a href="' . $baseurl . '/itvitae_theorie/week5/post.php" target="_BLANK">POST</a><br>' . PHP_EOL;
 
 //Maak een formulier in HTML aan die met een GET-methode data stuurt naar
 //een PHP-script
-//Zet in een HTML-formulier 2 tekstvakken neer waar de naam een array is
-//(Bijv. <input name="FormArray[]">) en lees de waarden van het tekstvak uit in
-//een PHP-script.
 
 echo '<a href="' . $baseurl . '/itvitae_theorie/week5/get.php" target="_BLANK">GET</a><br>' . PHP_EOL;
 
@@ -73,8 +75,6 @@ echo '<code>If $_REQUEST is activated this should be possible if either POST or
       the function on in php.ini and it is nowadays turned off cause it is a
       vulnerability-risk. Also, when using a html-form you specified method in
       first line of the form so should know what to use (POST or GET)</code><br>';
-
-//TODO Pas de htmlspecialchars-functie toe in 1 van je bovenstaande PHP-scripts
 
 //TODO Pas ook de urlencode-functie toe in een hyperlink met een variabele die
 //afkomstig is uit een HTML-formulier. Zie ook de PHP.net documentatie voor extra

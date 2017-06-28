@@ -15,9 +15,11 @@
       function reviewForm() {
         $name = $_POST['name'];
         $place = $_POST['place'];
+        $char = htmlspecialchars($_POST['char']);
         echo '<pre>';
         var_dump($_POST['formArray']);
         echo '</pre>Hello ' . $name . ' from ' . $place . '.<br>' . PHP_EOL;
+        echo 'Specialchars: ' . $char . '<br>' . PHP_EOL;
       }
 
       function showForm() {
@@ -26,6 +28,7 @@
                 '<legend>Example for sending forms with POST</legend>' .
                   'Name: <input type="text" name="name" required>' .
                   'Place: <input type="text" name="place" required>' .
+                  'Char: <input type="text" name="char">' .
                   'Text: <input type="textarea" name="formArray[]">' .
                   'Text: <input type="textarea" name="formArray[]">' .
                   '<input type="submit" value="send">' .
