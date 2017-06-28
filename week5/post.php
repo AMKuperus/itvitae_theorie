@@ -4,6 +4,7 @@
 </head>
 <body>
       <?php
+      include 'config.inc.php';
       //Checking if POST holds data, if so doing something with it.
       if($_SERVER['REQUEST_METHOD'] == 'POST') {
         reviewForm();
@@ -14,7 +15,9 @@
       function reviewForm() {
         $name = $_POST['name'];
         $place = $_POST['place'];
-        echo 'Hello ' . $name . ' from ' . $place . '.<br>' . PHP_EOL;
+        echo '<pre>';
+        var_dump($_POST['formArray']);
+        echo '</pre>Hello ' . $name . ' from ' . $place . '.<br>' . PHP_EOL;
       }
 
       function showForm() {
@@ -23,10 +26,14 @@
                 '<legend>Example for sending forms with POST</legend>' .
                   'Name: <input type="text" name="name" required>' .
                   'Place: <input type="text" name="place" required>' .
+                  'Text: <input type="textarea" name="formArray[]">' .
+                  'Text: <input type="textarea" name="formArray[]">' .
                   '<input type="submit" value="send">' .
                 '</fieldset>' .
               '</form>';
       }
+      echo '<a href="' . $baseurl . '/itvitae_theorie/week5/week5.php">BACK to MAIN</a>';
+
       ?>
 </body>
 </html>

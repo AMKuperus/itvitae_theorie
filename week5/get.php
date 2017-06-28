@@ -4,6 +4,7 @@
 </head>
 <body>
       <?php
+      include 'config.inc.php';
       //Checking if GET has 'send', if so doing something with it.
       if(isset($_GET['send'])) {
         reviewForm();
@@ -27,6 +28,8 @@
                 '</fieldset>' .
               '</form>';
       }
+
+      echo '<a href="' . $baseurl . '/itvitae_theorie/week5/week5.php">BACK to MAIN</a>';
       ?>
 </body>
 </html>
