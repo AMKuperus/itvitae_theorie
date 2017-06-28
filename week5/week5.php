@@ -74,11 +74,24 @@ echo '<code>If $_REQUEST is activated this should be possible if either POST or
       GET is used,however is is a stupid thing to do since you would have to turn
       the function on in php.ini and it is nowadays turned off cause it is a
       vulnerability-risk. Also, when using a html-form you specified method in
-      first line of the form so should know what to use (POST or GET)</code><br>';
+      first line of the form so should know what to use (POST or GET)</code><br>' . PHP_EOL;
 
-//TODO Pas ook de urlencode-functie toe in een hyperlink met een variabele die
+//Pas ook de urlencode-functie toe in een hyperlink met een variabele die
 //afkomstig is uit een HTML-formulier. Zie ook de PHP.net documentatie voor extra
 //toelichting
+//Url to the get.php file
+$url_page = '/itvitae_theorie/week5/get.php';
+//Name and place for get request
+$name = 'Octocat';
+$place = 'Github';
+//Start building url-string
+$url = $baseurl;
+$url .= $url_page;
+$url .= '?name=' . urlencode($name);
+$url .= '&place=' . urlencode($place);
+$url .= '&send=' . urlencode('send');
+//Show the build $url in a link
+echo '<a href="' . htmlspecialchars($url) . '">Click for urlencoded link to get.php</a><br>' . PHP_EOL;
 
 //TODO Pas in een HTML-formulier & PHP-script de filter_var-functie toe met alle
 //Validate filters, Sanitize filters en overige filters.
