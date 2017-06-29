@@ -1,3 +1,5 @@
 <?php
 $baseurl = '';//Base path of the app
+$WSusername = '';//http://www.webservices.nl/ username for soap
+$WSpassword = '';//http://www.webservices.nl/ password for soap
 ?>
