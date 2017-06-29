@@ -117,7 +117,8 @@ echo $decode->{'Aston Martin'} . '<br>' . PHP_EOL;
 //TODO Bouw een webservice voor je casus-opdracht om data te consumeren en data
 //te posten in JSON of XML
 
-//TODO Zoek een webservice uit die via SOAP werkt en roep deze aan via je PHP-script
+//Zoek een webservice uit die via SOAP werkt en roep deze aan via je PHP-script
+echo '<a href="' . $baseurl . '/itvitae_theorie/week5/soap.php">Soap</a><br>' . PHP_EOL;
 
 //TODO Pas een API toe van https://openweathermap.org/api, http://opendata.rdw.nl/
 //of andere open-data API toe
