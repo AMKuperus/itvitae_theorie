@@ -120,6 +120,8 @@ echo $decode->{'Aston Martin'} . '<br>' . PHP_EOL;
 //Zoek een webservice uit die via SOAP werkt en roep deze aan via je PHP-script
 echo '<a href="' . $baseurl . '/itvitae_theorie/week5/soap.php">Soap</a><br>' . PHP_EOL;
 
-//TODO Pas een API toe van https://openweathermap.org/api, http://opendata.rdw.nl/
+//Pas een API toe van https://openweathermap.org/api, http://opendata.rdw.nl/
 //of andere open-data API toe
+echo 'Request APK for dutch licenseplate: <a href="' . $baseurl . '/itvitae_theorie/week5/apk.php">here</a><br>' . PHP_EOL;
+
 ?>
