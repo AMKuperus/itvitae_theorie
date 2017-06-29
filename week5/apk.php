@@ -28,9 +28,11 @@ function getApk($plate) {
   //STep 3. decode json
   $result = json_decode($json);
   //var_dump($result);
+  setlocale(LC_ALL, 'nl_NL');
+  $date = DateTime::createFromFormat('Ymd', $result[0]->vervaldatum_keuring)->format('d F Y');
   //TODO only return if there is someting to return, and say nothing to return if result is empty
   return  'Kenteken: ' . $result[0]->kenteken .
-          ' | APK geldig tot: ' . $result[0]->vervaldatum_keuring . '<br>' . PHP_EOL;
+          ' | APK geldig tot: ' . $date . '<br>' . PHP_EOL;
 }
 
 function showForm() {
