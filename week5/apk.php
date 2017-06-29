@@ -2,15 +2,21 @@
 include 'config.inc.php';
 
 //Checking if POST holds data, if so doing something with it.
-if($_SERVER['REQUEST_METHOD'] == 'POST') {//TODO add error when plate is not coorreect and show from again
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
   reviewForm();
 } else {
   showForm();
 }
 
-function reviewForm() {//TODO plate should only contain capital and int in the string
-  $plate = filter_var($_POST['plate'], FILTER_SANITIZE_STRING);//TODO add regexp function
-  echo getApk($plate);
+function reviewForm() {
+  //Create correct format of string for json call trimming - and making everything uppercase
+  $plate = strtoupper(strtr(trim(filter_var($_POST['plate'], FILTER_SANITIZE_STRING)), ['-' => '', ' ' => '']));
+  if(strlen($plate) == 6 && preg_match('/[A-Z0-9]{6}/',$plate)){
+    echo getApk($plate);
+  } else {
+    echo 'The entered licenseplate: ' . $plate . ' does not meet the criteria. Please try again.';
+    showForm();
+  }
 }
 
 //Get apk request for $plate
@@ -22,6 +28,7 @@ function getApk($plate) {
   //STep 3. decode json
   $result = json_decode($json);
   //var_dump($result);
+  //TODO only return if there is someting to return, and say nothing to return if result is empty
   return  'Kenteken: ' . $result[0]->kenteken .
           ' | APK geldig tot: ' . $result[0]->vervaldatum_keuring . '<br>' . PHP_EOL;
 }
@@ -35,6 +42,7 @@ function showForm() {
           '</fieldset>' .
         '</form>';
 }
+
 echo '<a href="' . $baseurl . '/itvitae_theorie/week5/week5.php">BACK to MAIN</a>';
 
 ?>
