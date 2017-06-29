@@ -28,7 +28,7 @@ function getApk($plate) {
   //STep 3. decode json
   $result = json_decode($json);
   //var_dump($result);
-  setlocale(LC_ALL, 'nl_NL');
+  //Create date so we can format it the way we want to instead of having 20170629
   $date = DateTime::createFromFormat('Ymd', $result[0]->vervaldatum_keuring)->format('d F Y');
   //TODO only return if there is someting to return, and say nothing to return if result is empty
   return  'Kenteken: ' . $result[0]->kenteken .
