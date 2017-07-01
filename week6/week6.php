@@ -22,7 +22,9 @@
 //TODO Pas deze functies toe om een bestand/map na te checken: is_dir, is_executable,
 //is_file, is_link, is_readable, is_writable, is_uploaded_file.
 
-//TODO Haal een webpagina op met je eigen PHP script.
+//Haal een webpagina op met je eigen PHP script.
+//In order to make this work you need to turn on allow_url_include=On in php.ini
+include ('http://www.amkuperus.nl/test/121.html');
 
 //TODO Vraag informatie over een bestand op via de finfo_open en finfo_file functies
 
