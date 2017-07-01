@@ -23,16 +23,19 @@ function reviewForm() {
 function getApk($plate) {
   //Make request url to rdw with $plate Step 1: create url
   $url = 'https://opendata.rdw.nl/resource/uxre-t94a.json?kenteken=' . $plate;
-  //Step 2. get json contents
-  $json = file_get_contents($url);
-  //STep 3. decode json
-  $result = json_decode($json);
-  //var_dump($result);
-  //Create date so we can format it the way we want to instead of having 20170629
-  $date = DateTime::createFromFormat('Ymd', $result[0]->vervaldatum_keuring)->format('d F Y');
-  //TODO only return if there is someting to return, and say nothing to return if result is empty
-  return  'Kenteken: ' . $result[0]->kenteken .
-          ' | APK geldig tot: ' . $date . '<br>' . PHP_EOL;
+
+  try {
+    //Step 2. get json contents
+    $json = file_get_contents($url);
+    //STep 3. decode json
+    $result = json_decode($json);
+    //Create date so we can format it the way we want to instead of having 20170629
+    $date = DateTime::createFromFormat('Ymd', $result[0]->vervaldatum_keuring)->format('d F Y');
+    return  'Kenteken: ' . $result[0]->kenteken .
+            ' | APK geldig tot: ' . $date . '<br>' . PHP_EOL;
+  } catch(Exception $e) {
+    die($e->getMessage());
+  }
 }
 
 function showForm() {
