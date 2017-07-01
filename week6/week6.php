@@ -24,6 +24,8 @@
 
 //Haal een webpagina op met je eigen PHP script.
 //In order to make this work you need to turn on allow_url_include=On in php.ini
+//This only loads the pgae given, and not the scripts that are linked inside like
+//JavaScript and css.
 include ('http://www.amkuperus.nl/test/121.html');
 
 //TODO Vraag informatie over een bestand op via de finfo_open en finfo_file functies
