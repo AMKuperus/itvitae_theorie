@@ -16,8 +16,8 @@
 //TODO Pas de fpassthru en fprintf-functies toe
 
 //TODO Pas de file operation functies toe: chdir, chroot, readdir, rmdir, basename,
-//chmod, copy, file_exists, fputs, rename, unlink. Beschrijf in commentaar welke functies niet
-//werkten.
+//chmod, copy, file_exists, fputs, rename, unlink. Beschrijf in commentaar welke
+//functies niet werkten.
 
 //TODO Pas deze functies toe om een bestand/map na te checken: is_dir, is_executable,
 //is_file, is_link, is_readable, is_writable, is_uploaded_file.
