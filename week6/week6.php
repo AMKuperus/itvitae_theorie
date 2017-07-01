@@ -11,7 +11,11 @@
 //TODO Vraag de inhoud van het tekstbestand op via de file_get_content-functie,
 //en overschrijf de inhoud met de file_put_content-functie
 
-//TODO Maak een PHP-script aan om in een CSV-bestand een array te schrijven
+//Maak een PHP-script aan om in een CSV-bestand een array te schrijven
+$cars = ['Saab', 'Ferrari', 'Ford', 'Opel', 'BMW', 'Mini', 'Fiat', 'Renault', 'Aston Martin'];
+$file = fopen('file.csv', 'w+');
+fputcsv($file, $cars);
+fclose($file);
 
 //TODO Pas de fpassthru en fprintf-functies toe
 
