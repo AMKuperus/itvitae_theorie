@@ -20,7 +20,7 @@ include 'config.inc.php';
 #header('Expires: Sun, 01 Jul 2005 00:00:00 GMT');
 #header('Pragma: no-cache');
 
-echo '<a href="' . $baseurl . '/itvitae_theorie/week5/pdf.php" target="_blank">
+echo '<a href="' . $baseurl . '/itvitae_theorie/week5/pdf.php">
       CLICK ME TO SEE A PDF</a><br>' . PHP_EOL;
 
 //Experimenteer met sessies; de session_start, session_destroy, session_id
@@ -61,12 +61,12 @@ if(!isset($_COOKIE['dough'])) {
 //een PHP-script.
 //Pas de htmlspecialchars-functie toe in 1 van je bovenstaande PHP-scripts
 
-echo '<a href="' . $baseurl . '/itvitae_theorie/week5/post.php" target="_BLANK">POST</a><br>' . PHP_EOL;
+echo '<a href="' . $baseurl . '/itvitae_theorie/week5/post.php" >POST</a><br>' . PHP_EOL;
 
 //Maak een formulier in HTML aan die met een GET-methode data stuurt naar
 //een PHP-script
 
-echo '<a href="' . $baseurl . '/itvitae_theorie/week5/get.php" target="_BLANK">GET</a><br>' . PHP_EOL;
+echo '<a href="' . $baseurl . '/itvitae_theorie/week5/get.php" >GET</a><br>' . PHP_EOL;
 
 //Controleer met een HTML-formulier of je data kan uitlezen via de $_REQUEST
 //variable.
@@ -93,7 +93,7 @@ $url .= '&send=' . urlencode('send');
 //Show the build $url in a link
 echo '<a href="' . htmlspecialchars($url) . '">Click for urlencoded link to get.php</a><br>' . PHP_EOL;
 
-//TODO Pas in een HTML-formulier & PHP-script de filter_var-functie toe met alle
+//Pas in een HTML-formulier & PHP-script de filter_var-functie toe met alle
 //Validate filters, Sanitize filters en overige filters.
 
 //Bouw een script dat een array omzet naar JSON of XML, en dit op het scherm
