@@ -42,6 +42,8 @@ date_default_timezone_set('Europe/Amsterdam');
 //Pointer at end of file, appending file with a string with a date-time.
 $file = fopen('testfile.txt', 'a') or die('Unable to open file');
 fwrite($file, 'Last edited on ' . date('D j F Y H:i:s') . "<br>\r\n");
+//fputs() is the alias for fwrite()
+//fputs($file, 'Last edited on ' . date('D j F Y H:i:s') . "<br>\r\n");
 fclose($file);
 
 //Open the .txt file and print it to the screen
@@ -86,9 +88,79 @@ fclose($fp);
 
 echo '<hr>' . PHP_EOL;
 
-//TODO Pas de file operation functies toe: chdir, chroot, readdir, rmdir, basename,
+//Pas de file operation functies toe: chdir, chroot, readdir, rmdir, basename,
 //chmod, copy, file_exists, fputs, rename, unlink. Beschrijf in commentaar welke
 //functies niet werkten.
+echo 'Current working directory: ' . getcwd() . '<br>' . PHP_EOL;
+chdir('uploads');
+echo 'New working directory: ' . getcwd() . '<br>' . PHP_EOL;
+
+//chroot() This function is only available to GNU and BSD systems, and only when
+//using the CLI, CGI or Embed SAPI. Also, this function requires root privileges.
+//This function is not implemented on Windows platforms.
+#chroot('htdocs');
+#echo getcwd();
+$dir = '../';
+
+//Is it a directory?
+if(is_dir($dir)) {
+  //if yes, open the directory with opendir()
+  if($d = opendir($dir)) {
+    //Loop trough the directory
+    while (($file = readdir($d)) !== FALSE) {
+      //for mime_content_type() in windows turn on php_fileinfo.dll in php.ini and reboot server
+      echo ' | Filename: ' . $file . ' | Filetype: ' . mime_content_type($dir . $file) . '<br>' . PHP_EOL;
+    }
+    //Close directory
+    closedir($d);
+  }
+} else {
+  echo 'Not a dir<br>' . PHP_EOL;
+}
+
+//if the directory excosts create it with mkdir()
+if(!is_dir('./temp')) {
+  mkdir('./temp', 0777, FALSE);
+  echo 'Created directory';
+}
+
+//Remove a directory wir rmdir()
+if(file_exists('./temp')) {
+  rmdir('./temp');
+  echo 'Removed directory';
+}
+
+echo '<br>' . PHP_EOL;
+
+//copy() (.bak stands for a backupfile)
+if(!copy('../fprint.txt', '../uploads/fprint.txt.bak')) {
+  echo 'Failed to copy file';
+} else {
+  echo 'Succesfully made backup for fprint.txt';
+}
+
+echo '<br>' . PHP_EOL;
+
+//rename() renames a directory from old to new name
+if(file_exists('../file.csv')) {
+  rename('../file.csv', '../uploads/my_file.csv');
+  echo 'Good job!';
+} else {
+  echo 'Not working';
+}
+
+//unlink() deletes a file
+#unlink('../uploads/fprint.txt.bak');
+
+echo '<br>' . PHP_EOL;
+
+//echo basedirectory
+echo basename('itvitae_theorie/week6/week6.php') . '<br>' . PHP_EOL;
+
+//chmod change read/write chmod settings for a file
+chmod('../testfile.txt', 0777);//TODO seems not to work on windows?
+//return file permissions in octal chmod code
+echo 'Chmod: ' . substr(sprintf('%o',fileperms( '../testfile.txt')), -4) . '<br>' . PHP_EOL;
 
 echo '<hr>' . PHP_EOL;
 
