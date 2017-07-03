@@ -164,8 +164,70 @@ echo 'Chmod: ' . substr(sprintf('%o',fileperms( '../testfile.txt')), -4) . '<br>
 
 echo '<hr>' . PHP_EOL;
 
-//TODO Pas deze functies toe om een bestand/map na te checken: is_dir, is_executable,
+//Pas deze functies toe om een bestand/map na te checken: is_dir, is_executable,
 //is_file, is_link, is_readable, is_writable, is_uploaded_file.
+
+//is_executable()
+if(!is_executable('../fprint.txt')) {
+  echo 'Not executable';
+} else {
+  echo 'Executable';
+}
+
+echo '<br>' . PHP_EOL;
+
+//is_file()
+if(!is_file('../fprint.txt')) {
+  echo 'Not a regular file';
+} else {
+  echo 'A regular file';
+}
+
+echo '<br>' . PHP_EOL;
+
+//is_link()//TODO this does not seem to work proper on windows?
+if(!is_link('C:\somefile.lnk')) {
+  echo 'Not a link';
+} else {
+  echo 'Chain me...';
+}
+
+echo '<br>' . PHP_EOL;
+
+//is_readable()
+if(!is_readable('../fprint.txt')) {
+  echo 'Not readable';
+} else {
+  echo 'Can read this';
+}
+
+echo '<br>' . PHP_EOL;
+
+//is_writable()
+if(!is_writable('../fprint.txt')) {
+  echo 'Not writable';
+} else {
+  echo 'Writable';
+}
+
+echo '<br>' . PHP_EOL;
+
+//is_uploaded_file()
+if(!is_uploaded_file('../fprint.txt')) {
+  echo 'Not uploaded';
+} else {
+  echo 'Uploaded';
+}
+
+
+echo '<br>' . PHP_EOL;
+
+
+//clear the cache for is_link() because that is a cached function.
+clearstatcache();
+
+echo '<br>' . PHP_EOL;
+
 
 echo '<hr>' . PHP_EOL;
 //Haal een webpagina op met je eigen PHP script.
