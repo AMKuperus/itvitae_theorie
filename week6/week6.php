@@ -49,8 +49,17 @@ $file2 = fopen('testfile.txt', 'r') or die('Unable to read stream.');
 echo fread($file2, filesize('testfile.txt'));
 fclose($file2);
 
-//TODO Vraag de inhoud van het tekstbestand op via de file_get_content-functie,
+echo '<hr>' . PHP_EOL;
+
+//Vraag de inhoud van het tekstbestand op via de file_get_content-functie,
 //en overschrijf de inhoud met de file_put_content-functie
+//Calling file with file_get_contents()
+$fgc = file_get_contents('testfile.txt');
+//Appending file with file_put_contents()
+file_put_contents('testfile.txt', '-Appending string-', FILE_APPEND);
+echo $fgc;
+
+echo '<hr>' . PHP_EOL;
 
 //Maak een PHP-script aan om in een CSV-bestand een array te schrijven
 $cars = ['Saab', 'Ferrari', 'Ford', 'Opel', 'BMW', 'Mini', 'Fiat', 'Renault', 'Aston Martin'];
@@ -58,25 +67,41 @@ $file = fopen('file.csv', 'w+');
 fputcsv($file, $cars);
 fclose($file);
 
+echo '<hr>' . PHP_EOL;
+
 //TODO Pas de fpassthru en fprintf-functies toe
+
+echo '<hr>' . PHP_EOL;
 
 //TODO Pas de file operation functies toe: chdir, chroot, readdir, rmdir, basename,
 //chmod, copy, file_exists, fputs, rename, unlink. Beschrijf in commentaar welke
 //functies niet werkten.
 
+echo '<hr>' . PHP_EOL;
+
 //TODO Pas deze functies toe om een bestand/map na te checken: is_dir, is_executable,
 //is_file, is_link, is_readable, is_writable, is_uploaded_file.
 
+echo '<hr>' . PHP_EOL;
 //Haal een webpagina op met je eigen PHP script.
 //In order to make this work you need to turn on allow_url_include=On in php.ini
 //This only loads the pgae given, and not the scripts that are linked inside like
 //JavaScript and css.
 #include ('http://www.amkuperus.nl/test/121.html');
+//Also possible to get webpage with file_get_contents(), which will also not load
+//linked files
+echo file_get_contents('http://www.amkuperus.nl/test/121.html');
+
+echo '<hr>' . PHP_EOL;
 
 //TODO Vraag informatie over een bestand op via de finfo_open en finfo_file functies
 
+echo '<hr>' . PHP_EOL;
+
 //TODO Maak een simpele client/server applicatie met de stream_socket_server en
 //stream_socket_client functies.
+
+echo '<hr>' . PHP_EOL;
 
 //TODO Pas stream filters toe in je client/server applicatie.
 
