@@ -67,9 +67,22 @@ $file = fopen('file.csv', 'w+');
 fputcsv($file, $cars);
 fclose($file);
 
-echo '<hr>' . PHP_EOL;
+//Pas de fpassthru en fprintf-functies toe
+//fpassthru() outputs all remaining data from handle ($f())
+$f = fopen('file.csv', 'r');
+fpassthru($f);
+fclose($f);
 
-//TODO Pas de fpassthru en fprintf-functies toe
+//fprintf() writes formated data to a file (file-write + sprinf combined)
+if(!$fp = fopen('fprint.txt', 'a+')) {
+  return;
+}
+//Let's have a cup of coffe on <today>
+$string = "%d cup of coffe on %s\r\n";
+$count = 1;
+$date = date('l');
+fprintf($fp, $string, $count, $date);
+fclose($fp);
 
 echo '<hr>' . PHP_EOL;
 
