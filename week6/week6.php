@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   $file = $_FILES['file'];
   //Build the directory string
   $dir = 'uploads/';
-  echo $dir .  $file['name'] .'<hr>' . PHP_EOL;
+  //echo $dir .  $file['name'] .'<hr>' . PHP_EOL;
   //Check if the file already exists
   if(!file_exists($dir .  $file['name'])) {
     $data = [' |Name: ' . $file['name'], ' |Type: ' . $file['type'], ' |Size: ' . $file['size']];
@@ -33,9 +33,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 }
 
-//TODO Maak een tekstbestand aan via de f*-functies (zoals fopen, etc). Bewerk
+echo '<hr>' . PHP_EOL;
+date_default_timezone_set('Europe/Amsterdam');
+//Maak een tekstbestand aan via de f*-functies (zoals fopen, etc). Bewerk
 //dit tekstbestand later in de code; voeg ‘Last edited on <datum>’ toe aan het
 //einde van het bestand. Toon vervolgens de inhoud van het bestand op het scherm.
+//open file with fopen, if it does not exist it will be created.
+//Pointer at end of file, appending file with a string with a date-time.
+$file = fopen('testfile.txt', 'a') or die('Unable to open file');
+fwrite($file, 'Last edited on ' . date('D j F Y H:i:s') . "<br>\r\n");
+fclose($file);
+
+//Open the .txt file and print it to the screen
+$file2 = fopen('testfile.txt', 'r') or die('Unable to read stream.');
+echo fread($file2, filesize('testfile.txt'));
+fclose($file2);
 
 //TODO Vraag de inhoud van het tekstbestand op via de file_get_content-functie,
 //en overschrijf de inhoud met de file_put_content-functie
