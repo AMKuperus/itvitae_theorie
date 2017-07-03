@@ -1,5 +1,5 @@
 <?php
-//TODO Maak een HTML-formulier aan waarmee je bestanden kan uploaden naar een
+// Maak een HTML-formulier aan waarmee je bestanden kan uploaden naar een
 //PHP-script. Zorg dat je met het PHP-script de client-side bestandsnaam, de
 //mime-type en file-size uitleest en in een bestand zet met dezelfde bestandsnaam,
 //alleen dan met .txt op het einde als extensie.
@@ -10,23 +10,28 @@ echo '<form action="week6.php" method="POST" enctype="multipart/form-data">' .
         '</fieldset>' .
       '</form>';
 
+//Uploading a file to uploads directory from form
+//WARNING: This is not the best way to save uploads, as for uploads it would be
+//better to also check things like filesize and corresponding mime-type so there
+//is less chance to get bad files
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
   $file = $_FILES['file'];
-  $dir = '/uploads';
-  if(!file_exists($dir . $file['name'])) {//TODO check in uploads
-    //file does not exist
-    echo 'ok';
+  //Build the directory string
+  $dir = 'uploads/';
+  echo $dir .  $file['name'] .'<hr>' . PHP_EOL;
+  //Check if the file already exists
+  if(!file_exists($dir .  $file['name'])) {
     $data = [' |Name: ' . $file['name'], ' |Type: ' . $file['type'], ' |Size: ' . $file['size']];
-    //TODO save this .tx in uploads dir.
-    file_put_contents($file['name'] . '.txt', $data);
-    //TODO go to upoads diectory to safe file
-    move_uploaded_file($file['tmp_name'], getcwd() . $file['name']);
+    //Save a .txt file with the data array in uploads dir named originalfilename.mimetype.txt
+    file_put_contents($dir . $file['name'] . '.txt', $data);
+    //Move the file from tmp to uploads
+    move_uploaded_file($file['tmp_name'], $dir . $file['name']);
+    echo 'File succesfully uploaded!';
   } else {
+    //If the file already exists according to file_exists give a error
     echo 'Error: the file already exists';
   }
-} //else {
-  //showForm();
-//}
+}
 
 //TODO Maak een tekstbestand aan via de f*-functies (zoals fopen, etc). Bewerk
 //dit tekstbestand later in de code; voeg ‘Last edited on <datum>’ toe aan het
