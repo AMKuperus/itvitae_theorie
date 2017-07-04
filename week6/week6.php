@@ -24,7 +24,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [' |Name: ' . $file['name'], ' |Type: ' . $file['type'], ' |Size: ' . $file['size']];
     //Save a .txt file with the data array in uploads dir named originalfilename.mimetype.txt
     file_put_contents($dir . $file['name'] . '.txt', $data);
-    //Move the file from tmp to uploads
+    //Move the file from tmp to uploads (Normally it would be better to change
+    //the filename as security measure)
     move_uploaded_file($file['tmp_name'], $dir . $file['name']);
     echo 'File succesfully uploaded!';
   } else {
@@ -158,7 +159,8 @@ echo '<br>' . PHP_EOL;
 echo basename('itvitae_theorie/week6/week6.php') . '<br>' . PHP_EOL;
 
 //chmod change read/write chmod settings for a file
-chmod('../testfile.txt', 0777);//TODO seems not to work on windows?
+//Only works on unix-systems
+chmod('../testfile.txt', 0777);
 //return file permissions in octal chmod code
 echo 'Chmod: ' . substr(sprintf('%o',fileperms( '../testfile.txt')), -4) . '<br>' . PHP_EOL;
 
@@ -185,8 +187,11 @@ if(!is_file('../fprint.txt')) {
 
 echo '<br>' . PHP_EOL;
 
-//is_link()//TODO this does not seem to work proper on windows?
-if(!is_link('C:\somefile.lnk')) {
+//is_link()This does not work on windows?
+//Mac os x commands to create link:
+//MacBook-Pro-3:htdocs User$ ln -s favicon.ico favicon_link.ico
+//MacBook-Pro-3:htdocs User$ ls -al
+if(!is_link('../../../favicon_link.ico')) {
   echo 'Not a link';
 } else {
   echo 'Chain me...';
@@ -241,7 +246,11 @@ echo file_get_contents('http://www.amkuperus.nl/test/121.html');
 
 echo '<hr>' . PHP_EOL;
 
-//TODO Vraag informatie over een bestand op via de finfo_open en finfo_file functies
+//Vraag informatie over een bestand op via de finfo_open en finfo_file functies
+$finfo = new finfo(FILEINFO_MIME);
+
+$filename = '../fprint.txt';
+echo $finfo->file($filename);
 
 echo '<hr>' . PHP_EOL;
 
