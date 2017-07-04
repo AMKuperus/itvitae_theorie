@@ -254,7 +254,7 @@ echo $finfo->file($filename);
 
 echo '<hr>' . PHP_EOL;
 
-//TODO Maak een simpele client/server applicatie met de stream_socket_server en
+//Maak een simpele client/server applicatie met de stream_socket_server en
 //stream_socket_client functies.
 
 echo '<hr>' . PHP_EOL;
