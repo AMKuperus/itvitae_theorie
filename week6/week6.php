@@ -256,9 +256,5 @@ echo '<hr>' . PHP_EOL;
 
 //Maak een simpele client/server applicatie met de stream_socket_server en
 //stream_socket_client functies.
-
-echo '<hr>' . PHP_EOL;
-
-//TODO Pas stream filters toe in je client/server applicatie.
-
+//Pas stream filters toe in je client/server applicatie.
 ?>
