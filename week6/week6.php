@@ -81,7 +81,7 @@ if(!$fp = fopen('fprint.txt', 'a+')) {
   return;
 }
 //Let's have a cup of coffe on <today>
-$string = "%d cup of coffe on %s\r\n";
+$string = "%d cup of coffee on %s\r\n";
 $count = 1;
 $date = date('l');
 fprintf($fp, $string, $count, $date);
