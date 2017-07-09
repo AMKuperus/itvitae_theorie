@@ -17,9 +17,25 @@ function showCats() {
   $res = $db->query($sql);
   $res->setFetchMode(PDO::FETCH_OBJ);
 
+  echo '<table>' .
+        '<tr>' .
+          '<th>ID</th>' .
+          '<th>Name</th>' .
+          '<th>Color</th>' .
+          '<th>Type</th>' .
+          '<th>Price</th>' .
+          '<th>Status</th>' .
+        '</tr>';
   foreach ($res as $r) {
-    echo "ID: {$r->cat_id} | Name: {$r->name} | Color: {$r->color} | Type: {$r->type}
-          | Price: &eur;{$r->price} | Status: {$r->status}<br>\n";
+    echo "<tr>
+          <td>{$r->cat_id}</td>
+          <td>{$r->name}</td>
+          <td>{$r->color}</td>
+          <td>{$r->type} </td>
+          <td>{$r->price}</td>
+          <td>{$r->status}</td>
+          </tr>\n";
   }
+  echo '</table>';
 }
 ?>
