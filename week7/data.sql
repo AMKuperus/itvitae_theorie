@@ -69,5 +69,5 @@ INSERT INTO history (cat_id, customer_id) VALUES
 INSERT INTO transaction (cat_id, Customer_id) VALUES
 (5, 9), (1, 3), (2, 1), (3, 1), (5, 3);
 
-INSERT INTO prize (prize_id, value) VALUES
+INSERT INTO price (price_id, value) VALUES
 ('A', 100), ('B', 80), ('C', 60), ('D', 30), ('E', '15');
