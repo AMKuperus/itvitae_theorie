@@ -113,9 +113,20 @@ $decode = json_decode($jsoncars);
 echo $decode->Ford . '<br>' . PHP_EOL;
 //Call a object with whitespace in its name as follows with {'na me'}
 echo $decode->{'Aston Martin'} . '<br>' . PHP_EOL;
+echo '<br>' . PHP_EOL;
 
-//TODO Bouw een webservice voor je casus-opdracht om data te consumeren en data
+//Bouw een webservice voor je casus-opdracht om data te consumeren en data
 //te posten in JSON of XML
+$url = 'http://127.0.0.1/TAS/www/json/json';
+try {
+  $json = file_get_contents($url);
+  $result = json_decode($json);
+  var_dump($result);
+} catch(Exception $e) {
+  die($e->getMessage);
+}
+echo '<br>' . PHP_EOL;
+
 
 //Zoek een webservice uit die via SOAP werkt en roep deze aan via je PHP-script
 echo '<a href="' . $baseurl . '/itvitae_theorie/week5/soap.php">Soap</a><br>' . PHP_EOL;
