@@ -51,4 +51,28 @@ function addCat($name, $color, $type, $price, $status) {
   $do->bindValue(':status', $status, PDO::PARAM_STR);
   $do->execute();
 }
+
+function showCustomers() {
+  global $db;
+  $sql = "SELECT * FROM customers";
+
+  $res = $db->query($sql);
+  $res->setFetchMode(PDO::FETCH_OBJ);
+  echo '<table>' .
+        '<tr>' .
+          '<th>ID</th>' .
+          '<th>First Name</th>' .
+          '<th>Last Name</th>' .
+          '<th>Behaviour code</th>' .
+        '</tr>';
+  foreach ($res as $r) {
+    echo "<tr>
+          <td>{$r->customer_id}</td>
+          <td>{$r->first_name}</td>
+          <td>{$r->last_name}</td>
+          <td>{$r->behaviour_code} </td>
+          </tr>\n";
+  }
+  echo '</table>';
+}
 ?>
