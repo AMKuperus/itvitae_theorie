@@ -1,4 +1,4 @@
-CREATE DATABASE cats4rent;
+CREATE DATABASE cat4rent(
 
 CREATE TABLE cats (
   cat_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,7 +9,7 @@ CREATE TABLE cats (
   status VARCHAR(255)
 );
 
-CREATE TABLE prize (
+CREATE TABLE price (
   price_id VARCHAR(1) PRIMARY KEY,
   value DECIMAL NOT NULL
 );
@@ -23,23 +23,31 @@ CREATE TABLE customers (
 
 CREATE TABLE transaction (
   tid INT PRIMARY KEY AUTO_INCREMENT,
-  cat_id INT,
-  customer_id INT,
+  history_id INT,
   date TIMESTAMP,
   price DECIMAL
 );
 
-CREATE TABLE history (
-  cat_id INT,
+/*payment table/method of payment/tid/status*/
+CREATE TABLE payment (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  method VARCHAR(10),
+  tid INT,
+  status VARCHAR(10)
+);
+
+CREATE TABLE history (/*add history_id*/
+  history_id INT PRIMARY KEY AUTO_INCREMENT,
   customer_id INT,
+  cat_id INT,
   date DATETIME
 );
 
-ALTER TABLE transaction ADD FOREIGN KEY (cat_id) REFERENCES cats(cat_id);
-ALTER TABLE transacton ADD FOREIGN KEY (customer_id) REFERENCES customers(customer_id);
-ALTER TABLE history ADD FOREIGN KEY (cat_id) REFERENCES cats(cat_id);
+ALTER TABLE transaction ADD FOREIGN KEY (history_id) REFERENCES history(history_id);
 ALTER TABLE history ADD FOREIGN KEY (customer_id) REFERENCES customers(customer_id);
+ALTER TABLE history ADD FOREIGN KEY (cat_id) REFERENCES cats(cat_id);
 ALTER TABLE cats ADD FOREIGN KEY (price) REFERENCES price(price_id);
+ALTER TABLE payment ADD FOREIGN KEY (tid) REFERENCES transaction(tid);
 
 INSERT INTO Cats (name, color, type, status) VALUES
 ('Molly', 'Black', 'European shorthair', 'unavailable'),
@@ -63,11 +71,6 @@ INSERT INTO customers (first_name, last_name, behaviour_code) VALUES
 ('Liza', 'Marklund', 'A'),
 ('Henning', 'Mankell', 'B');
 
-INSERT INTO history (cat_id, customer_id) VALUES
-(5, 9), (1, 3), (2, 1), (3, 1), (5, 3);
-
-INSERT INTO transaction (cat_id, Customer_id) VALUES
-(5, 9), (1, 3), (2, 1), (3, 1), (5, 3);
-
 INSERT INTO price (price_id, value) VALUES
 ('A', 100), ('B', 80), ('C', 60), ('D', 30), ('E', '15');
+);
