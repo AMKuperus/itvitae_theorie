@@ -38,4 +38,17 @@ function showCats() {
   }
   echo '</table>';
 }
+
+function addCat($name, $color, $type, $price, $status) {
+  global $db;
+  $sql = "INSERT INTO cats (name, color, type, price, status) VALUES
+                          (:name, :color, :type, :price, :status)";
+  $do = $db->prepare($sql);
+  $do->bindValue(':name', $name, PDO::PARAM_STR);
+  $do->bindValue(':color', $color, PDO::PARAM_STR);
+  $do->bindValue(':type', $type, PDO::PARAM_STR);
+  $do->bindValue(':price', $price, PDO::PARAM_STR);
+  $do->bindValue(':status', $status, PDO::PARAM_STR);
+  $do->execute();
+}
 ?>
