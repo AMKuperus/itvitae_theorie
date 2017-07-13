@@ -22,6 +22,12 @@ class CatController {
     $arrCats = $this->getAllCats();
     //Calling static method showCatTable() from CatView with $arrCats
     CatView::showCatTable($arrCats);
+    //CatView::showAddCatForm();
+  }
+
+  //Show addCatForm
+  public function viewAddCat() {
+    //Calling static method showAddCatForm() from CatView
     CatView::showAddCatForm();
   }
 
@@ -50,6 +56,9 @@ class CatController {
 
   //TODO Function to filter the data from $_POST send by addcatform, if all ok proceed
   //to addCat
+  public function checkCat() {
+    //TODO sanitize all $_POST here and when ok sent to addCat()
+  }
 
   //TODO NEEDS TESTING STILL!!
   //Add a cat to the database
