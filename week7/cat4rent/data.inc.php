@@ -10,7 +10,7 @@ try {
   die();
 }
 
-function showCats() {
+/*<--DEPRECATED function showCats() {
   global $db;
   $sql = "SELECT * FROM cats";
 
@@ -37,9 +37,9 @@ function showCats() {
           </tr>\n";
   }
   echo '</table>';
-}
+}DEPRECATED-->*/
 
-function addCat($name, $color, $type, $price, $status) {
+/*<--DEPRECATEDfunction addCat($name, $color, $type, $price, $status) {
   global $db;
   $sql = "INSERT INTO cats (name, color, type, price, status) VALUES
                           (:name, :color, :type, :price, :status)";
@@ -50,7 +50,7 @@ function addCat($name, $color, $type, $price, $status) {
   $do->bindValue(':price', $price, PDO::PARAM_STR);
   $do->bindValue(':status', $status, PDO::PARAM_STR);
   $do->execute();
-}
+}-->DEPRECATED*/
 
 function showCustomers() {
   global $db;

@@ -5,11 +5,11 @@ function showMenu() {
   echo '<p><a href="cat4rent.php">Home</a> | ' .
         '<a href="cats.php">All Cats</a> | ' .
         '<a href="addCat.php">Add a cat</a> | ' .
-        '<a href="customers.php">Customers</a> | ' . 
+        '<a href="customers.php">Customers</a> | ' .
         '<a href="addCustomer.php">Add Customer</a></p>';
 }
 
-function addCatForm() {
+/*<--DEPRECATEDfunction addCatForm() {
   echo '<form method="POST">
         <fieldset><legend>Add a cat</legend>
         <p>Name: <input type="text" name="name" required></p>
@@ -28,7 +28,7 @@ function addCatForm() {
                 </select>
         <input type="submit">
         </fieldset></form>';
-}
+}-->DEPRECATED*/
 
 function actionAddCat() {
   if(isset($_POST['name'])) {

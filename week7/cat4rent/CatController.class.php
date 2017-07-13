@@ -8,7 +8,7 @@ use \PDO;
 
 class CatController {
   public $db;
-  //TODO add Cat/edit Cat
+  //TODO edit Cat??
   //TODO get cat (id)
 
   //Constructor sets the database property so we can use it inside this class
@@ -22,6 +22,7 @@ class CatController {
     $arrCats = $this->getAllCats();
     //Calling static method showCatTable() from CatView with $arrCats
     CatView::showCatTable($arrCats);
+    CatView::showAddCatForm();
   }
 
   //Get all the cats from the database and return a array filled with Cats objects
@@ -46,5 +47,27 @@ class CatController {
     //Return the $arrCat[]
     return $arrCats;
   }
+
+  //TODO Function to filter the data from $_POST send by addcatform, if all ok proceed
+  //to addCat
+
+  //TODO NEEDS TESTING STILL!!
+  //Add a cat to the database
+  public function addCat($catObj) {
+    //Create query
+    $sql = "INSERT INTO cats (name, color, type, price, status) VALUES
+                            (:name, :color, :type, :price, :status)";
+    //Prepare
+    $ask = $this->db->prepare($sql);
+    //Bind values
+    $ask->bindValue(':name', $catObj->name, PDO::PARAM_STR);
+    $ask->bindValue(':color', $catObj->color, PDO::PARAM_STR);
+    $ask->bindValue(':type', $catObj->type, PDO::PARAM_STR);
+    $ask->bindValue(':price', $catObj->price, PDO::PARAM_STR);
+    $ask->bindValue(':status', $catObj->status, PDO::PARAM_STR);
+    //Execute
+    $ask->execute();
+  }
+
 }
 ?>
