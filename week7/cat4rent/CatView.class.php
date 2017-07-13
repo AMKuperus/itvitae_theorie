@@ -1,4 +1,5 @@
-<?php//Presentation of data
+<?php
+//Presentation of data
 namespace Cat;
 
 class CatView {

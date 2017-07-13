@@ -1,4 +1,5 @@
-<?php//Controller
+<?php
+//Controller
 namespace Cat;
 
 include 'Cat.class.php';
