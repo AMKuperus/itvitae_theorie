@@ -15,25 +15,24 @@ class CatView {
 
   //Show table with all cats
   public static function showCatTable($arrCats) {
-    echo '<table>' .
-          '<tr>' .
-            '<th>ID</th>' .
-            '<th>Name</th>' .
-            '<th>Color</th>' .
-            '<th>Type</th>' .
-            '<th>Price</th>' .
-            '<th>Status</th>' .
-          '</tr>';
+    //Aray containing all head-items for the table
+    $head = ['ID', 'Name', 'Color', 'Type', 'Price', 'Status'];
+    echo "<table><tr>\n";
+    //Loop trough all the head-items and make a <th>-element
+    foreach($head as $h) {
+      echo "<th>$h</th>\n";
+    }
+    echo "</tr>\n";
     //Loop trough $arrCats and for each object create a new table row with filling.
     foreach($arrCats as $a) {
-      echo "<tr>
-            <td>{$a->id}</td>
-            <td>{$a->name}</td>
-            <td>{$a->color}</td>
-            <td>{$a->type} </td>
-            <td>{$a->price}</td>
-            <td>{$a->status}</td>
-            </tr>\n";
+      //Array containing all the items to show in the table-td-lements
+      $items = [$a->id, $a->name, $a->color, $a->type, $a->price, $a->status];
+      echo "<tr>\n";
+      //Loop trough all elements
+      foreach($items as $i) {
+        echo "<td>$i</td>\n";
+      }
+      echo "</tr>\n";
       }
     echo "</table>\n";
   }
