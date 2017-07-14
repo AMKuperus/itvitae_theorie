@@ -54,28 +54,57 @@ class CatController {
     return $arrCats;
   }
 
-  //TODO Function to filter the data from $_POST send by addcatform, if all ok proceed
-  //to addCat
+  //Filter all data from $_POST[] and sanitizes it. Sets all sanitized data in
+  //$catArr[] and gives it to addCat()
   public function checkCat() {
-    //TODO sanitize all $_POST here and when ok sent to addCat()
+    //Create array for the data
+    $catArr = [];
+    //Sanitize all $_POST here and when ok sent to addCat()
+    if(isset($_POST['name'])) {
+      $catArr['name'] = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+    }
+    if(isset($_POST['color'])) {
+      $catArr['color'] = filter_var($_POST['color'], FILTER_SANITIZE_STRING);
+    }
+    if(isset($_POST['type'])) {
+      $catArr['type'] = filter_var($_POST['type'], FILTER_SANITIZE_STRING);
+    }
+    if(isset($_POST['price'])) {
+      $catArr['price'] = filter_var($_POST['price'], FILTER_SANITIZE_STRING);
+    }
+    if(isset($_POST['status'])) {
+      $catArr['status'] = filter_var($_POST['status'], FILTER_SANITIZE_STRING);
+    }
+    if(count($catArr) == 5) {
+      $this->addCat($catArr);
+    } else {
+      //Not enough data, can put a errorcode here
+      echo 'Something is going wrong here. Please try again<br>' . PHP_EOL;
+    }
   }
 
-  //TODO NEEDS TESTING STILL!!
+
   //Add a cat to the database
-  public function addCat($catObj) {
+  public function addCat($catArr) {
     //Create query
     $sql = "INSERT INTO cats (name, color, type, price, status) VALUES
                             (:name, :color, :type, :price, :status)";
     //Prepare
     $ask = $this->db->prepare($sql);
     //Bind values
-    $ask->bindValue(':name', $catObj->name, PDO::PARAM_STR);
-    $ask->bindValue(':color', $catObj->color, PDO::PARAM_STR);
-    $ask->bindValue(':type', $catObj->type, PDO::PARAM_STR);
-    $ask->bindValue(':price', $catObj->price, PDO::PARAM_STR);
-    $ask->bindValue(':status', $catObj->status, PDO::PARAM_STR);
+    $ask->bindValue(':name', $catArr['name'], PDO::PARAM_STR);
+    $ask->bindValue(':color', $catArr['color'], PDO::PARAM_STR);
+    $ask->bindValue(':type', $catArr['type'], PDO::PARAM_STR);
+    $ask->bindValue(':price', $catArr['price'], PDO::PARAM_STR);
+    $ask->bindValue(':status', $catArr['status'], PDO::PARAM_STR);
     //Execute
-    $ask->execute();
+    if ($ask->execute()) {
+      //When execute returns OK item was added succesfully to the databes
+      echo '<p>Succesfully added: ' . $catArr['name'] . ' to the database</p>';
+    } else {
+      //False, when execute encountered a error
+      echo 'Something wenty wrong here | Error: ' . $ask->errorCode() . '<br>' . PHP_EOL;
+    }
   }
 
 }

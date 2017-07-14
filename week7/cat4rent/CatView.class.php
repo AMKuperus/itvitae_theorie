@@ -31,10 +31,8 @@ class CatView {
     echo "</table>\n";
   }
 
-  //TODO STILL NEEDS TESTING!!
   //Show a form to add a cat to the database
   public static function showAddCatForm() {
-    //TODO link with adding cat to db action
     echo '<form method="POST">
           <fieldset><legend>Add a cat</legend>
           <p>Name: <input type="text" name="name" required></p>
