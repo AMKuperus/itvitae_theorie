@@ -83,7 +83,6 @@ class CatController {
     }
   }
 
-
   //Add a cat to the database
   public function addCat($catArr) {
     //Create query
@@ -103,7 +102,7 @@ class CatController {
       echo '<p>Succesfully added: ' . $catArr['name'] . ' to the database</p>';
     } else {
       //False, when execute encountered a error
-      echo 'Something wenty wrong here | Error: ' . $ask->errorCode() . '<br>' . PHP_EOL;
+      echo 'Something went wrong here | Error: ' . $ask->errorCode() . '<br>' . PHP_EOL;
     }
   }
 
