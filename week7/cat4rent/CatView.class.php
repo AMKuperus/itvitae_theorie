@@ -2,9 +2,16 @@
 //Presentation of data
 namespace Cat;
 
+include 'FormBuilder.class.php';
+
+use Form\FormBuilder;
+
 class CatView {
-  //TODO showinfo function
   //TODO showresult function
+
+  public static function showCat($catObj) {
+    //TODO showinfo function
+  }
 
   //Show table with all cats
   public static function showCatTable($arrCats) {
@@ -33,24 +40,22 @@ class CatView {
 
   //Show a form to add a cat to the database
   public static function showAddCatForm() {
-    echo '<form method="POST">
-          <fieldset><legend>Add a cat</legend>
-          <p>Name: <input type="text" name="name" required></p>
-          <p>Color: <input type="text" name="color" required></p>
-          <p>Type: <input type="text" name="type" required></p
-          <p>Price: <select name="price" required>
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="D">D</option>
-                      <option value="E">E</option>
-                  </select></p>
-          <p>Status: <select name="status" required>
-                      <option value="available">Available</option>
-                      <option value="unavailable">Unavailable</option>
-                  </select>
-          <input type="submit">
-          </fieldset></form>';
+    $formOptions = ['name' => 'addCatForm', 'method' => 'POST', 'action' => '',
+                    'enctype' => '', 'target' => ''];
+    //TODO alter select options array to pull key-values from database
+    $prizes = ['A' => '100', 'B' => '80', 'C' => '60', 'D' => '30', 'E' => '15'];
+    $status = ['Available' => 'Available', 'Unavailable' => 'Unavailable'];
+    $catForm = new FormBuilder();
+    $catForm->startForm($formOptions);
+    $catForm->startFieldset('Add a cat');
+    $catForm->inputText('Name: ', 'name', 'required', 'Cat name');
+    $catForm->inputText('Cat color: ', 'color', 'required', 'Cat\'s color');
+    $catForm->inputText('Cat type: ', 'type', 'required', 'Cat type');
+    $catForm->select('Prize: ', 'price', $prizes, 'required');
+    $catForm->select('Status: ', 'status', $status, 'required');
+    $catForm->submit('Add cat');
+    $catForm->endForm();
+    $catForm->publish();
   }
 
 }
