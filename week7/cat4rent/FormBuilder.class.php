@@ -1,5 +1,8 @@
 <?php
-//A class to easily build forms
+//    --------------- A class to easily build forms ----------------
+//    by AMKuperus | Version: 0.2Beta | Last revision: 14 July 2017
+//    Do not alter or reproduce without the knowledge of the author.
+//    Contains the basic most used html-form-elements and attributes.
 namespace Form;
 
 class FormBuilder {
@@ -7,7 +10,7 @@ class FormBuilder {
   private $content = [];
   private $end = [];
 
-  //TODO start form
+  //Start the form
   //Use following example $options[] associative array and fill in desired options
   //All options you do not want to use you should leave blank.
   /*  $options = [ 'name' => '',
@@ -53,10 +56,12 @@ class FormBuilder {
   public function submit($value = '') {
     $this->content[] = "<input type=\"submit\" value=\"$value\">\n";
   }
+
   //End the fieldset
   private function endFieldset() {
     $this->end[] = "</fieldset>\n";
   }
+
   //End the form
   public function endForm() {
     $this->end[] = "</form>\n";
