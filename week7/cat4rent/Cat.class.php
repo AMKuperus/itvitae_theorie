@@ -12,11 +12,11 @@ class Cat {
   public $status;
 
   //Constructor creates the object
-  public function __construct($catObj) {
-    $this->setValues($catObj);
+  public function __construct($arrCats) {
+    $this->setValues($arrCats);
   }
 
-  //Method to set all the properties from $catObj
+  //Method to set all the properties from $arrCats
   function setValues($arrCats) {
     //Set values for the properties for a Cat object
     $this->id = $arrCats['cat_id'];
@@ -26,5 +26,7 @@ class Cat {
     $this->price = $arrCats['price'];
     $this->status = $arrCats['status'];
   }
+
+
 }
 ?>

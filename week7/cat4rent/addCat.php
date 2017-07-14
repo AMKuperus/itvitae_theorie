@@ -9,8 +9,7 @@
   if($_SERVER['REQUEST_METHOD'] == 'POST') {
     //Do something with data and add to database
     $catControl->checkCat();
-  } else {
-    //Future error reporting option
   }
+
   $catControl->viewAddCat();
 ?>
