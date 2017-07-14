@@ -41,6 +41,8 @@ class CatController {
     $ask->bindValue(':id', $id, FILTER_SANITIZE_STRING);
     //Execute
     $ask->execute();
+    $return = new Cat($ask->fetch(PDO::FETCH_ASSOC));
+    return $return;
   }
 
   //Get all the cats from the database and return a array filled with Cats objects
