@@ -31,6 +31,18 @@ class CatController {
     CatView::showAddCatForm();
   }
 
+  //Get a cat from the database where cat_id matches $id
+  public function getCat($id) {
+    //Create query
+    $sql = "SELECT * FROM cats WHERE cat_id = :id";
+    //Prepare query
+    $ask = $this->db->prepare($sql);
+    //Bind values
+    $ask->bindValue(':id', $id, FILTER_SANITIZE_STRING);
+    //Execute
+    $ask->execute();
+  }
+
   //Get all the cats from the database and return a array filled with Cats objects
   public function getAllCats() {
     //Create query in $sql
