@@ -37,7 +37,7 @@ class FormBuilder {
   //$required and $placeholder are optional, however if you need placeholder and
   //don't need required the fill in '' for required when calling method.
   public function inputText($title, $name, $required = '', $placeholder = '') {
-    $this->start[] = "<p>$title<input type=\"text\" name=\"$name\" placeholder=\"$placeholder\" $required></p>\n";
+    $this->content[] = "<p><label>$title</label><input type=\"text\" name=\"$name\" placeholder=\"$placeholder\" $required></p>\n";
   }
 
   //Create a select html attribute with dropdownlist containing options
@@ -50,7 +50,7 @@ class FormBuilder {
   //multiple is required should be added as '' in method-call.
   public function select($title, $name, $values, $required = '', $multiple = '') {
     //Create the <select>
-    $this->content[] = "<p>$title<select name=\"$name\" $required $multiple>\n";
+    $this->content[] = "<p><label>$title</label><select name=\"$name\" $required $multiple>\n";
     //Create the options from array with foreach
     foreach($values as $k => $v) {
       $this->content[] = "<option value=\"$k\">$v</option>\n";
