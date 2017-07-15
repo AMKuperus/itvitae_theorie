@@ -9,7 +9,7 @@
  * @todo implement values for value-keeping when form is not filled in correct   *
  * @todo implement class/id options for hooking to css                           *
  *********************************************************************************/
-namespace Form;
+namespace Tools;
 
 class FormBuilder {
   private $start = [];
