@@ -4,7 +4,7 @@
  * Contains the basic most used html-form-elements and attributes.               *
  * @author AMKuperus                                                             *
  * @version 0.4Beta  | Last revision: 15 July 2017                               *
- * @copyright Do not alter or reproduce without the knowledge of the author.     *
+ * @license GPL Do not alter or reproduce without the knowledge of the author.   *
  * @todo add more input-elements                                                 *
  * @todo implement values for value-keeping when form is not filled in correct   *
  * @todo implement class/id options for hooking to css                           *
@@ -22,7 +22,7 @@ class FormBuilder {
    *                      Use following example $options[] associative array
    *                      and fill in desired options, leave options you
    *                      don't want empty as ''.
-   *                      Example array:
+   *                      @example array:
    *                         $options = [ 'name' => '',
    *     	                                'method' => 'POST',
    *                                      'action' => '',
