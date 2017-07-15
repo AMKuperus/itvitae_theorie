@@ -2,9 +2,11 @@
 //Presentation of data
 namespace Cat;
 
+include 'TableBuilder.class.php';
 include 'FormBuilder.class.php';
 
-use Form\FormBuilder;
+use Tools\TableBuilder;
+use Tools\FormBuilder;
 
 class CatView {
   //TODO showresult function
@@ -15,26 +17,15 @@ class CatView {
 
   //Show table with all cats
   public static function showCatTable($arrCats) {
-    //Aray containing all head-items for the table
+    $catTable = new TableBuilder();
     $head = ['ID', 'Name', 'Color', 'Type', 'Price', 'Status'];
-    echo "<table><tr>\n";
-    //Loop trough all the head-items and make a <th>-element
-    foreach($head as $h) {
-      echo "<th>$h</th>\n";
-    }
-    echo "</tr>\n";
-    //Loop trough $arrCats and for each object create a new table row with filling.
-    foreach($arrCats as $a) {
-      //Array containing all the items to show in the table-td-lements
-      $items = [$a->id, $a->name, $a->color, $a->type, $a->price, $a->status];
-      echo "<tr>\n";
-      //Loop trough all elements
-      foreach($items as $i) {
-        echo "<td>$i</td>\n";
-      }
-      echo "</tr>\n";
-      }
-    echo "</table>\n";
+    $catTable->tableHead($head, 'All the cat\'s');
+    //TODO fix TableBuilder class so it can crate items from such array as below
+    //$items = ['id', 'name', 'color', 'type', 'price', 'status'];
+    $items = [];
+    $catTable->tableBody($items, $arrCats);
+    $catTable->tableFoot();
+    $catTable->publish();
   }
 
   //Show a form to add a cat to the database
