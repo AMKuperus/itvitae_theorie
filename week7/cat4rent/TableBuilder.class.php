@@ -3,9 +3,8 @@
  *                A class to easily build html-tables                            *
  * Contains the basic most used html-table-elements and attributes.              *
  * @author AMKuperus                                                             *
- * @version 0.1Beta  | Last revision: 15 July 2017                               *
+ * @version 0.2Beta  | Last revision: 16 July 2017                               *
  * @license GPL Do not alter or reproduce without the knowledge of the author.   *
- * @todo automate $items to fetch items from desires objects in tableBody-method *
  * @todo add missing html table elements/attributes                              *
  *********************************************************************************/
 namespace Tools;
@@ -27,27 +26,44 @@ class TableBuilder {
    * the method-call
    */
   public function tableHead($items, $caption = '', $class = '', $id = '') {
-    $this->head[] = "<table class=\"$class\" id=\"$id\">\n<caption>$caption</caption>\n<tr>\n";
+    //Start table and add to $this->head[]
+    $this->head[] = "<table class=\"$class\" id=\"$id\">\n";
+    //Only when @param caption contains a value add the caption to $this->head[]
+    if(strlen($caption) >= 1) {
+      $this->head[] = "<caption>$caption</caption>\n";
+    }
+    //Start table row
+    $this->head[] = "<tr>\n";
+    //Loop trough @param $items and add them to $this->head[]
     foreach($items as $i) {
       $this->head[] = "<th>$i</th>\n";
     }
+    //Close the row and add to $this->head[]
     $this->head[] = "</tr>\n";
   }
 
   /**
    * Create the body off the table
-   * @param  array  $items Array containing the $key->value for access to the
-   *                       object inside the @param $array[]
+   * @param  array  $items Array containing names off the items you want in the
+   *                       table.
+   *                       Warning: This array must be an exact match to the
+   *                       naming used in the class and may not contain whitespace.
    * @param  array  $array Array filled with objects for filling the body.
    */
   public function tableBody($items, $array) {
+    //Enter the array
     foreach($array as $a) {
+      //Start the row and add to $this->body[]
       $this->body[] = "<tr>\n";
-      //TODO create array as shown below automaticly, based on defined list entered in parameters
-      //$items = [$a->id, $a->name, $a->color, $a->type, $a->price, $a->status];
-      foreach($a as $i) {
-        $this->body[] = "<td>$i</td>\n";
+      //Enter the object
+      foreach($a as $i => $j) {
+        //Only print the values that are present in $items
+        if(in_array($i, $items)) {
+          //Add the value to the cell
+          $this->body[] = "<td>$j</td>\n";
+        }
       }
+      //Close the row and add to $this->body[]
       $this->body[] = "</tr>\n";
     }
   }
@@ -64,14 +80,15 @@ class TableBuilder {
    * @return echo all table elements in proper order.
    */
   public function publish() {
+    //Publish the head
     foreach($this->head as $s) {
       echo $s;
     }
-
+    //Publish the body
     foreach($this->body as $b) {
       echo $b;
     }
-
+    //Publish the foot
     foreach($this->foot as $f) {
       echo $f;
     }

@@ -20,9 +20,7 @@ class CatView {
     $catTable = new TableBuilder();
     $head = ['ID', 'Name', 'Color', 'Type', 'Price', 'Status'];
     $catTable->tableHead($head, 'All the cat\'s');
-    //TODO fix TableBuilder class so it can crate items from such array as below
-    //$items = ['id', 'name', 'color', 'type', 'price', 'status'];
-    $items = [];
+    $items = ['id', 'name', 'color', 'type', 'price', 'status'];
     $catTable->tableBody($items, $arrCats);
     $catTable->tableFoot();
     $catTable->publish();
