@@ -3,7 +3,7 @@
  *                A class to easily build html-tables                            *
  * Contains the basic most used html-table-elements and attributes.              *
  * @author AMKuperus                                                             *
- * @version 0.2Beta  | Last revision: 16 July 2017                               *
+ * @version 0.3Beta  | Last revision: 16 July 2017                               *
  * @license GPL Do not alter or reproduce without the knowledge of the author.   *
  * @todo add missing html table elements/attributes                              *
  *********************************************************************************/
