@@ -45,7 +45,7 @@ class TableBuilder {
   /**
    * Create the body off the table
    * @param  array  $items Array containing names off the items you want in the
-   *                       table.
+   *                       table, in the order you want them to appear in.
    *                       Warning: This array must be an exact match to the
    *                       naming used in the class and may not contain whitespace.
    * @param  array  $array Array filled with objects for filling the body.
@@ -55,12 +55,15 @@ class TableBuilder {
     foreach($array as $a) {
       //Start the row and add to $this->body[]
       $this->body[] = "<tr>\n";
-      //Enter the object
-      foreach($a as $i => $j) {
-        //Only print the values that are present in $items
-        if(in_array($i, $items)) {
-          //Add the value to the cell
-          $this->body[] = "<td>$j</td>\n";
+      //Loop trough @param $items and get all desired objects
+      foreach($items as $i) {
+          //Check if the property is in the class
+          if(property_exists($a, $i)) {
+            //Put property in $this->body[]
+            $this->body[] = "<td>{$a->$i}</td>\n";
+        } else {
+            //Put empty cell in $this->body[]
+            $this->body[] = "<td></td>\n";
         }
       }
       //Close the row and add to $this->body[]
