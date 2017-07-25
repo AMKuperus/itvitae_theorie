@@ -30,8 +30,6 @@ class CatController {
     CatView::showAddCatForm();
   }
 
-  //Get a cat from the database where cat_id matches $id
-
   /**
    * Get a cat from the database
    * @param  int $id      Id of the cat to get info about.

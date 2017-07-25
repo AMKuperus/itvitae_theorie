@@ -24,8 +24,6 @@ public static function showCat($catObj) {
     return $catInfo;
   }
 
-  //Show table with all cats
-
   /**
    * Show table with all cats
    * Uses TableBuilder to build the table
