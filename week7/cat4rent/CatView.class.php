@@ -9,13 +9,28 @@ use Tools\TableBuilder;
 use Tools\FormBuilder;
 
 class CatView {
-  //TODO showresult function
 
-  public static function showCat($catObj) {
-    //TODO showinfo function
+/**
+ * Show information about a specific cat.
+ * @param  Cat-Object $catObj   The cat to get information about as a object.
+ * @return String     $catInfo  <div> with cat info.
+ */
+public static function showCat($catObj) {
+    $catInfo =  '<div><p>Cat: ' . $catObj->name . ' | ID#: ' . $catObj->id . '</p>' .
+                '<p>Color: ' . $catObj->color . '</p>' .
+                '<p>Type cat: ' . $catObj->type . '</p>' .
+                '<p>Status: ' . $catObj->status . ' | Prize: ' . $catObj->price . '</p>' .
+                '</div>';
+    return $catInfo;
   }
 
   //Show table with all cats
+
+  /**
+   * Show table with all cats
+   * Uses TableBuilder to build the table
+   * @param  Array $arrCats Array containing Cat-objects
+   */
   public static function showCatTable($arrCats) {
     $catTable = new TableBuilder();
     $head = ['ID', 'Name', 'Color', 'Type', 'Price', 'Status'];

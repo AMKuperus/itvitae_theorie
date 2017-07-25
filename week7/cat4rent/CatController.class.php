@@ -9,7 +9,6 @@ use \PDO;
 class CatController {
   public $db;
   //TODO edit Cat??
-  //TODO get cat (id)
 
   //Constructor sets the database property so we can use it inside this class
   public function __construct($db) {
@@ -32,6 +31,12 @@ class CatController {
   }
 
   //Get a cat from the database where cat_id matches $id
+
+  /**
+   * Get a cat from the database
+   * @param  int $id      Id of the cat to get info about.
+   * @return echo string  from CatView::showCat
+   */
   public function getCat($id) {
     //Create query
     $sql = "SELECT * FROM cats WHERE cat_id = :id";
@@ -42,7 +47,7 @@ class CatController {
     //Execute
     $ask->execute();
     $return = new Cat($ask->fetch(PDO::FETCH_ASSOC));
-    return $return;
+    echo CatView::showCat($return);
   }
 
   //Get all the cats from the database and return a array filled with Cats objects
