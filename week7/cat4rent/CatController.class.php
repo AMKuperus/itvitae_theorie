@@ -10,12 +10,18 @@ class CatController {
   public $db;
   //TODO edit Cat??
 
-  //Constructor sets the database property so we can use it inside this class
+  /**
+   * Constructor sets the database property so we can use it inside this class.
+   * @param Object $db  PDO database object.
+   */
   public function __construct($db) {
     $this->db = $db;
   }
 
-  //Show all the cats in a table
+  /**
+   * Show all the cats in a table.
+   * @return Object   TableBuilder-object
+   */
   public function viewCats(){
     //Get all the cats
     $arrCats = $this->getAllCats();
@@ -24,7 +30,10 @@ class CatController {
     //CatView::showAddCatForm();
   }
 
-  //Show addCatForm
+  /**
+   * Show the addCat-form
+   * @return Object   FormBuilder object
+   */
   public function viewAddCat() {
     //Calling static method showAddCatForm() from CatView
     CatView::showAddCatForm();
@@ -32,8 +41,8 @@ class CatController {
 
   /**
    * Get a cat from the database
-   * @param  int $id      Id of the cat to get info about.
-   * @return Cat-object 
+   * @param  String $id      Id of the cat to get info about.
+   * @return Cat-object
    */
   public function getCat($id) {
     //Create query
@@ -48,7 +57,10 @@ class CatController {
     return $return;
   }
 
-  //Get all the cats from the database and return a array filled with Cats objects
+  /**
+   * Get all the cats from the database.
+   * @return Array Array filled with all Cat-objects available in teh database.
+   */
   public function getAllCats() {
     //Create query in $sql
     $sql = "SELECT * FROM cats";
@@ -71,8 +83,11 @@ class CatController {
     return $arrCats;
   }
 
-  //Filter all data from $_POST[] and sanitizes it. Sets all sanitized data in
-  //$catArr[] and gives it to addCat()
+  /**
+   * Filter all the data from $_POSt[] and sanitize it. Sets all sanitized data
+   * in $catArr[] and gives it to addCat()
+   * @return Array Array containing sanitized cat data.
+   */
   public function checkCat() {
     //Create array for the data
     $catArr = [];
@@ -100,7 +115,11 @@ class CatController {
     }
   }
 
-  //Add a cat to the database
+  /**
+   * Add a cat to the database.
+   * @param Array   $catArr Array containing all the data to put into the database
+   *                        belonging to this cat.
+   */
   public function addCat($catArr) {
     //Create query
     $sql = "INSERT INTO cats (name, color, type, price, status) VALUES
