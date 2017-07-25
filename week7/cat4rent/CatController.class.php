@@ -33,7 +33,7 @@ class CatController {
   /**
    * Get a cat from the database
    * @param  int $id      Id of the cat to get info about.
-   * @return echo string  from CatView::showCat
+   * @return Cat-object 
    */
   public function getCat($id) {
     //Create query
@@ -45,7 +45,7 @@ class CatController {
     //Execute
     $ask->execute();
     $return = new Cat($ask->fetch(PDO::FETCH_ASSOC));
-    echo CatView::showCat($return);
+    return $return;
   }
 
   //Get all the cats from the database and return a array filled with Cats objects
