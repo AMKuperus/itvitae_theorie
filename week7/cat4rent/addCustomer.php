@@ -1,6 +1,11 @@
 <?php
   include 'head.inc.php';
+  include 'CustomerController.class.php';
 
-  echo '<h1>Add a new customer</h1>';
+  use Customer\CustomerController;
+
+  $customerControl = new CustomerController($db);
+
+  $customerControl->viewAddCustomer();
 
 ?>

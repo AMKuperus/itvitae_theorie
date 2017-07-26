@@ -12,7 +12,7 @@ class Customer {
   }
 
   function setValues($arrCustomer) {
-    $this->id = $arrCusomer['id'];
+    $this->id = $arrCustomer['customer_id'];
     $this->fname = $arrCustomer['first_name'];
     $this->lname = $arrCustomer['last_name'];
     $this->behaviour = $arrCustomer['behaviour_code'];

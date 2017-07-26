@@ -46,8 +46,8 @@ class CustomerView {
                     'enctype' => '', 'target' => ''];
     $form = new FormBuilder();
     $form->startForm($formOptions);
-    $form->startFieldset('Regiter a customer');
-    $form->inputText('First name: ', 'fname', 'required', 'firts name');
+    $form->startFieldset('Register a new customer');
+    $form->inputText('First name: ', 'fname', 'required', 'first name');
     $form->inputText('Last Name: ', 'lname', 'required', 'last name');
     $form->submit('Register');
     $form->endForm();
