@@ -8,6 +8,7 @@ class Customer {
   public $behaviour;
 
   public function __construct($arrCustomer) {
+    //TODO make contstructor work so it checks for $_POST or else does normal setValues
     $this->setValues($arrCustomer);
   }
 

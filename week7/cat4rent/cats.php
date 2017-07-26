@@ -1,6 +1,6 @@
 <?php
-  include 'head.inc.php';
-  include 'CatController.class.php';
+  include 'inc/head.inc.php';
+  include 'class/CatController.class.php';
 
   use Cat\CatController;
 

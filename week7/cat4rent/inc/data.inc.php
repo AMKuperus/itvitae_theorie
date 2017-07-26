@@ -1,5 +1,5 @@
 <?php
-require_once('config.inc.php');
+require_once('config/config.inc.php');
 
 try {
   $db = new PDO("mysql:host=$server;dbname=$dbname", $user, $password);

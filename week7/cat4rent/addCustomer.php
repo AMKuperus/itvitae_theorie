@@ -1,6 +1,6 @@
 <?php
-  include 'head.inc.php';
-  include 'CustomerController.class.php';
+  include 'inc/head.inc.php';
+  include 'class/CustomerController.class.php';
 
   use Customer\CustomerController;
 

@@ -1,8 +1,8 @@
 <?php
 namespace Customer;
 
-include 'TableBuilder.class.php';
-include 'FormBuilder.class.php';
+include 'tools/TableBuilder.class.php';
+include 'tools/FormBuilder.class.php';
 
 use Tools\TableBuilder;
 use Tools\FormBuilder;
