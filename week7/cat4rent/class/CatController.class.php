@@ -31,6 +31,21 @@ class CatController {
   }
 
   /**
+   * View a cat by specific id, give a message if cat does not exist
+   * @param  int      $id   Cat id
+   * @return Object         CatView objec echo's to the screen OR @return string errormessage
+   */
+  public function viewCatById($id) {
+    $catObj = $this->getCat($id);
+    //Check if the cat_id exists
+    if(is_bool($catObj)) {
+      echo 'Oops, we don\'t seem to have this cat: ' . $id;
+    } else {
+      CatView::showCat($catObj);
+    }
+  }
+
+  /**
    * Show the addCat-form
    * @return Object   FormBuilder object
    */
@@ -42,7 +57,7 @@ class CatController {
   /**
    * Get a cat from the database
    * @param  String $id      Id of the cat to get info about.
-   * @return Cat-object
+   * @return Cat-object OR @return boolean if cat cannot be found in database.
    */
   public function getCat($id) {
     //Create query
@@ -53,8 +68,13 @@ class CatController {
     $ask->bindValue(':id', $id, FILTER_SANITIZE_STRING);
     //Execute
     $ask->execute();
-    $return = new Cat($ask->fetch(PDO::FETCH_ASSOC));
-    return $return;
+    $result = $ask->fetch(PDO::FETCH_ASSOC);
+    if(is_bool($result)) {
+      return false;
+    } else {
+      $return = new Cat($result);
+      return $return;
+    }
   }
 
   /**

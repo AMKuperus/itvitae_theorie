@@ -21,7 +21,7 @@ public static function showCat($catObj) {
                 '<p>Type cat: ' . $catObj->type . '</p>' .
                 '<p>Status: ' . $catObj->status . ' | Prize: ' . $catObj->price . '</p>' .
                 '</div>';
-    return $catInfo;
+    echo $catInfo;
   }
 
   /**
