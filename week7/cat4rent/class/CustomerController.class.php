@@ -88,7 +88,50 @@ class CustomerController {
     return $arrCustomers;
   }
 
-  //TODO addCustomer
+  /**
+   * Check the $_POST data and if OK send it trough to addCustomer()
+   * @return Array    Array filled with sanitized customer-info
+   */
+  public function checkCustomer() {
+    //Create array for teh data
+    $customerArray = [];
+    //Sanitize all $_POST data
+    if(isset($_POST['fname']) && isset($_POST['lname'])) {
+      //Sanitize data and put it in the array
+      $customerArray['fname'] = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
+      $customerArray['lname'] = filter_var($_POST['lname'], FILTER_SANITIZE_STRING);
+
+      if(count($customerArray) === 2) {
+        $this->addCustomer($customerArray);
+      }
+    } else {
+      echo 'Please fill in all the fields.';
+      CustomerView::showAddCustomerForm();
+    }
+  }
+
+  /**
+   * Adds a customer to the database
+   * @param Array $customerArray Array holding the customer information.
+   */
+  public function addCustomer($customerArray) {
+    //Create query
+    $sql = "INSERT INTO customers (first_name, last_name, behaviour_code) VALUES
+            (:fname, :lname, :bcode)";
+    //Prepare
+    $ask = $this->db->prepare($sql);
+    //Bind Values
+    $ask->bindValue(':fname', $customerArray['fname'], PDO::PARAM_STR);
+    $ask->bindValue(':lname', $customerArray['lname'], PDO::PARAM_STR);
+    $ask->bindValue(':bcode', 'A', PDO::PARAM_STR);
+    //Execute
+    if($ask->execute()) {
+      echo 'Succesfully added: ' . $customerArray['fname'] . ' ' . $customerArray['lname'] . PHP_EOL;
+    } else {
+      echo 'Oops something went wrong while writing youre records, please give it another go....' . PHP_EOL;
+    }
+  }
+
   //TODO updateBehaviour
   //TODO blacklistCustomer
 }

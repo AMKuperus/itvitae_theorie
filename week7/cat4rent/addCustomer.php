@@ -6,6 +6,10 @@
 
   $customerControl = new CustomerController($db);
 
+  if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $customerControl->checkCustomer();
+  }
+
   $customerControl->viewAddCustomer();
 
 ?>
