@@ -22,6 +22,15 @@ class CustomerController {
   }
 
   /**
+   * Sow a customer by specific id
+   * @param  string   $id   The id of the customer to show.
+   * @return echo           Echo's the customer-information from CustomerView-class
+   */
+  public function viewCustomer($id) {
+    CustomerView::showCustomer($this->getCustomer($id));
+  }
+
+  /**
    * Show a form to add a customer.
    * @return Object  FormBuilder-object
    */
@@ -29,7 +38,23 @@ class CustomerController {
     CustomerView::showAddCustomerForm();
   }
 
-  //TODO getCustomer
+  /**
+   * Get a customer by id from database
+   * @param  int $id The id
+   * @return Object     Customer Object
+   */
+  public function getCustomer($id) {
+    //Create query
+    $sql = "SELECT * FROM customers WHERE customer_id = :id";
+    //Prepare sql
+    $ask = $this->db->prepare($sql);
+    //Bind values
+    $ask->bindValue(':id', $id, FILTER_SANITIZE_STRING);
+    //Execute
+    $ask->execute();
+    $return = new Customer($ask->fetch(PDO::FETCH_ASSOC));
+    return $return;
+  }
 
   /**
    * Get all the customers from the database and create Customers-objects for
@@ -49,7 +74,6 @@ class CustomerController {
     return $arrCustomers;
   }
 
-  //TODO checkCustomer
   //TODO addCustomer
   //TODO updateBehaviour
   //TODO blacklistCustomer

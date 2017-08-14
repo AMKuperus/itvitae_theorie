@@ -19,7 +19,7 @@ class CustomerView {
                     '<p>ID: ' . $customerObj->id .
                     ' | Behaviourcode: ' . $customerObj->behaviour .
                     '</p></div>';
-    return $customerInfo;
+    echo $customerInfo;
   }
 
   /**
