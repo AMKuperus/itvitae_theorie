@@ -34,7 +34,7 @@ public static function showCat($catObj) {
     $head = ['ID', 'Name', 'Color', 'Type', 'Price', 'Status'];
     $catTable->tableHead($head, 'All the cat\'s');
     $items = ['id'     => ['getCat.php?id' => 'link'],
-              'name'   => ['getCat.php?cat' => 'link'],//this link should be a baseurl that gets extended
+              'name'   => ['getCat.php?cat' => 'link'],//TODO search cat by name functions
               'color'  => [null],
               'type'   => ['em'],
               'price'  => ['strong'],
