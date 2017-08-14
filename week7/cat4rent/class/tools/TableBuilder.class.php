@@ -56,11 +56,37 @@ class TableBuilder {
       //Start the row and add to $this->body[]
       $this->body[] = "<tr>\n";
       //Loop trough @param $items and get all desired objects
-      foreach($items as $i) {
+      foreach($items as $i => $p) {
           //Check if the property is in the class
           if(property_exists($a, $i)) {
+            //TODO create switch for routing $p (properties of the item)
+            foreach($p as $value => $property) {
+              $start = "<td>";
+              $content = "{$a->$i}";
+              $end = "";
+              switch($property) {
+                case "em"://TODO improve so it can have multiple properties at the same time
+                  //$this->body[] = "<td><em>{$a->$i}</em></td>\n";
+                  $start .= "<em>";
+                  $end .= "</em>";
+                  break;
+                case "strong":
+                  //$this->body[] = "<td><strong>{$a->$i}</strong></td>\n";
+                  $start .= "<strong>";
+                  $end .= "</strong>";
+                  break;
+                case "link":
+                  //$this->body[] = "<td><a href=$value={$a->$i}>{$a->$i}</a></td>\n";
+                  $content = "<a href=$value={$a->$i}>{$a->$i}</a>";
+                  break;
+                default:
+                  //$this->body[] = "<td>{$a->$i}</td>\n";
+              }
+              $end .= '</td>' . PHP_EOL;
+            }
+            $this->body[] = $start . $content . $end;
             //Put property in $this->body[]
-            $this->body[] = "<td>{$a->$i}</td>\n";
+            #$this->body[] = "<td>{$a->$i}</td>\n";
         } else {
             //Put empty cell in $this->body[]
             $this->body[] = "<td></td>\n";
