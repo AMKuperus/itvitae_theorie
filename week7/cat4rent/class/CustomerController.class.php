@@ -47,7 +47,7 @@ class CustomerController {
   /**
    * Get a customer by id from database
    * @param  int $id The id
-   * @return Object     Customer Object
+   * @return Object     Customer Object OR @return Boolean false (if customer is nonexistant)
    */
   public function getCustomer($id) {
     //Create query
