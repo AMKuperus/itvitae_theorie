@@ -27,7 +27,13 @@ class CustomerController {
    * @return echo           Echo's the customer-information from CustomerView-class
    */
   public function viewCustomer($id) {
-    CustomerView::showCustomer($this->getCustomer($id));
+    $custObj = $this->getCustomer($id);
+    //Check if the customer exists, if is_bool is true the customer does not exist.
+    if(is_bool($custObj)){
+      echo 'Oops something went wrong here, we do not seem to have a customer with the id: ' . $id;
+    } else {
+      CustomerView::showCustomer($custObj);
+    }
   }
 
   /**
@@ -52,8 +58,16 @@ class CustomerController {
     $ask->bindValue(':id', $id, FILTER_SANITIZE_STRING);
     //Execute
     $ask->execute();
-    $return = new Customer($ask->fetch(PDO::FETCH_ASSOC));
-    return $return;
+    $result = $ask->fetch(PDO::FETCH_ASSOC);
+    //If $result is a boolean then the id is not available in the database and
+    //the customer does not exist.
+    if(is_bool($result)) {
+      return false;
+    } else {
+      //If the customer exists return it as a Customer-object.
+      $return = new Customer($result);
+      return $return;
+    }
   }
 
   /**
