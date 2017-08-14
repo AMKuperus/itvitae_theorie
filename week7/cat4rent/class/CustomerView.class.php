@@ -31,7 +31,10 @@ class CustomerView {
     $table = new TableBuilder();
     $head = ['ID', 'First name', 'Last name', 'Behaviour code'];
     $table->tableHead($head, 'All our customers');
-    $items = ['id', 'fname', 'lname', 'behaviour'];
+    $items = ['id' => ['getCustomer.php?id' => 'link'],
+              'fname' => [null],
+              'lname' => [null],
+              'behaviour' => [null]];
     $table->tableBody($items, $array);
     $table->tableFoot();
     $table->publish();
