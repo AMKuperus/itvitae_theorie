@@ -33,7 +33,13 @@ public static function showCat($catObj) {
     $catTable = new TableBuilder();
     $head = ['ID', 'Name', 'Color', 'Type', 'Price', 'Status'];
     $catTable->tableHead($head, 'All the cat\'s');
-    $items = ['id', 'name', 'color', 'type', 'price', 'status'];
+    $items = ['id'     => ['getCat.php?id' => 'link'],
+              'name'   => ['getCat.php?cat' => 'link'],//this link should be a baseurl that gets extended
+              'color'  => [null],
+              'type'   => ['em'],
+              'price'  => ['strong'],
+              'status' => ['em']];
+    //var_dump($items);
     $catTable->tableBody($items, $arrCats);
     $catTable->tableFoot();
     $catTable->publish();
