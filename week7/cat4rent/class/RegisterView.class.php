@@ -9,6 +9,10 @@
   use Tools\FormBuilder;
 
   class RegisterView {
-    //Functons etc
+    //Functions etc
+    //TODO select customer view
+    //TODO select cat view
+    //TODO checkout view
+    //TODO history view
   }
 ?>
